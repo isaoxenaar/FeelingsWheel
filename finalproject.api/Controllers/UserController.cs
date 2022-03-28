@@ -5,7 +5,7 @@ using finalproject.api.Models;
 namespace finalproject.api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class UserController : ControllerBase
 {
     private readonly ITableStorageService _storageService;

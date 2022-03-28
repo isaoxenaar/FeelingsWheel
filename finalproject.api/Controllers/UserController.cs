@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using finalproject.api.Services;
 using finalproject.api.Models;
+using Microsoft.Azure.CognitiveServices.Vision.Face;
+using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 
 namespace finalproject.api.Controllers;
 
@@ -12,13 +14,14 @@ public class UserController : ControllerBase
     public UserController(ITableStorageService storageService)
     {
         _storageService = storageService ?? throw new ArgumentNullException(nameof(storageService));
+
     }
 
     [HttpGet]
     [ActionName(nameof(GetAsync))]
-    public async Task<IActionResult> GetAsync([FromQuery] string category, string id)
+    public async Task<IActionResult> GetAsync([FromQuery] string name, string id)
     {
-        return Ok(await _storageService.RetrieveAsync(category, id));
+        return Ok(await _storageService.RetrieveAsync(name, id));
     }
 
     [HttpPost]
@@ -30,5 +33,12 @@ public class UserController : ControllerBase
         entity.RowKey = Id;
         var createdEntity = await _storageService.InsertOrMergeAsync(entity);
         return CreatedAtAction(nameof(GetAsync), createdEntity);
+    }
+
+    [HttpPost("{id}/image")]
+    public async Task<IActionResult> PostPicture(int id, string image)
+    {
+        IFaceClient client = FaceService.Authenticate(Environment.GetEnvironmentVariable("FACEAPI_ENDPOINT"), Environment.GetEnvironmentVariable("FACEAPI_KEY"));
+        return Ok(image);
     }
 }

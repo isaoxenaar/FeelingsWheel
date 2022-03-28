@@ -16,7 +16,9 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7189;http://localhost:5129",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "FACEAPI_KEY": "501fd120b8b34c588c4273551b0d2179",
+        "FACEAPI_ENDPOINT": "https://faceapiforfinalproject.cognitiveservices.azure.com/"
       }
     },
     "IIS Express": {

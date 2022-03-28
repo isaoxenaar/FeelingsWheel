@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(e => e.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Finalproject Api", Version = "v1" }));
 
+builder.Services.AddScoped<FaceService>();
 builder.Services.AddScoped<ITableStorageService, TableStorageService>();
 var app = builder.Build();
 

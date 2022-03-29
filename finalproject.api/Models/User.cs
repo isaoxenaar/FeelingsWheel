@@ -6,5 +6,5 @@ public class UserEntity : TableEntity
 {
     public string Id { get; set; }
     public string Name { get; set; }
-
+    public List<Emotion> Emotions { get; set; }
 }

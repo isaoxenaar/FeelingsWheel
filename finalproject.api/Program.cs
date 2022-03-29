@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen(e => e.SwaggerDoc("v1", new Microsoft.OpenApi.Mod
 builder.Services.AddScoped<FaceService>();
 builder.Services.AddScoped<ITableStorageService, TableStorageService>();
 var app = builder.Build();
-
+app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -27,3 +27,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+// app.UseCors(c => c
+// .AllowAnyHeader()
+// .AllowAnyMethod()
+// .WithOrigins("http://localhost:3000"));

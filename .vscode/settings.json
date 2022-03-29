@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "finalproject.api/bin/Release/net6.0/publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/917784dc-947a-4473-9eab-53625761456f/resourceGroups/Finalproject/providers/Microsoft.Web/sites/FinalprojectBackend"
+}

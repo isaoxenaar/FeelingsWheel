@@ -15,11 +15,10 @@ public class FaceController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> postPicture(string url)
+    public async Task<ActionResult<Emotion>> postPicture(string url)
     {
         var client = FaceService.Authenticate(Environment.GetEnvironmentVariable("FACEAPI_ENDPOINT"), Environment.GetEnvironmentVariable("FACEAPI_KEY"));
-        await FaceService.DetectFaceExtract(client, url, RecognitionModel.Recognition04);
-        return Ok();
+        var face = await FaceService.DetectFaceExtract(client, url, RecognitionModel.Recognition04);
+        return Ok(face);
     }
-
 }

@@ -1,0 +1,3 @@
+:root {
+  --header-font-size: clamp(1em, 1em + 10vmin, 2em);
+}

@@ -36,3 +36,14 @@
 /Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/obj/Release/net6.0/finalproject.api.pdb
 /Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/obj/Release/net6.0/finalproject.api.genruntimeconfig.cache
 /Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/obj/Release/net6.0/ref/finalproject.api.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/Azure.Core.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/Azure.Storage.Blobs.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/Azure.Storage.Common.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/Microsoft.Win32.SystemEvents.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/System.Drawing.Common.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/System.IO.Hashing.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/System.Memory.Data.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
+/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/bin/Release/net6.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll

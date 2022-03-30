@@ -1,11 +1,13 @@
 using Microsoft.Azure.CognitiveServices.Vision.Face;
 using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+using System.Text.RegularExpressions;
+using System.Drawing;
+
 
 namespace finalproject.api.Services;
 
 public class FaceService
 {
-
     private const string RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
     public static IFaceClient Authenticate(string endpoint, string key)
     {
@@ -32,5 +34,19 @@ public class FaceService
             Surprise = face.FaceAttributes.Emotion.Surprise,
         };
         return emotion;
+    }
+
+    public static Image getImage(string base64)
+    {
+
+        byte[] bytes = Convert.FromBase64String(base64);
+
+        Image image;
+        using (MemoryStream ms = new MemoryStream(bytes))
+        {
+            image = Image.FromStream(ms);
+        }
+
+        return image;
     }
 }

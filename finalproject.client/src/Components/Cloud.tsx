@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Cloudinary } from '@cloudinary/url-gen';
+import cloudinary from 'cloudinary-core';
+import Axios from 'axios';
 
-    class Main extends Component {
-
-    uploadWidget() {
-        cloudinary.openUploadWidget({ cloud_name: 'cloud_name', upload_preset: 'preset', tags:['xmas']},
-            function(error, result) {
-                console.log(result);
-            });
+const Cloud = (base64:any) => {
+    const UploadImage = (base64:any) => {
+        const data = new FormData()
+        data.append('file', base64)
+        data.append("upload_preset", "images")
+        fetch('https://api.cloudinary.com/v1_1/pearltusk/upload', {method: 'post', body: data})
+        .then(response => response.json())
+        .then(data => console.log('Success:', data))
+        .catch(err => console.error('Error:', err));
     }
-    render(){
-        return (
-            <div className="main">
-                <h1>Galleria</h1>
-                <div className="upload">
-                    <button onClick={this.uploadWidget.bind(this)} className="upload-button">
-                        Add Image
-                    </button>
-                </div>
-            </div>
+    //cloudinary.Upload(UploadParams params);
 
-        );
-    }
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: 'demo'
+        }
+    });
+    return (
+        <>
+            <button onClick={() => UploadImage(base64)}>Upload</button>
+        </>
+    )
 }
 
-render(<Main />, document.getElementById('container'));
+export default Cloud;

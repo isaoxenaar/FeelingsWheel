@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import Graph from "./Graph";
-import  User from '../Types/User';
-import  EmotionType from '../Types/Emotion';
-import Graph2 from './Graph2';
+import Graph from "../Graph";
+import  User from '../../Types/User';
+import  EmotionType from '../../Types/Emotion';
+import Graph2 from '../Graph2';
+import './Emotion.css';
 
 const Emotion = () => {
 

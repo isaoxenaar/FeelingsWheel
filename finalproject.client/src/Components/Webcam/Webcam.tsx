@@ -1,6 +1,7 @@
 import Webcam from 'react-webcam';
 import React, {useRef, useCallback, useState, useEffect} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import './Webcam.css';
 
 const Capture = () => {
     const videoConstraints = {
@@ -39,23 +40,23 @@ const Capture = () => {
     },[photo])
 
     return (
-        <section>
-        <Webcam 
-            audio={false}
-            mirrored={true}
-            ref={WebcamRef}
-            screenshotFormat="image/jpeg"
-            videoConstraints={videoConstraints}
-        >
-        {({ getScreenshot }) => (
-            <button onClick={capture}>
-                Capture Photo
-            </button>
-        )}
-        </Webcam>
-        { photo && (<img src={photo} alt="captured face" />)}
-        <div id="main"></div>
-        <div id="log"></div>
+        <section className='webcam'>
+            <Webcam 
+                audio={false}
+                mirrored={true}
+                ref={WebcamRef}
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+            >
+            {({ getScreenshot }) => (
+                <button onClick={capture}>
+                    Capture Photo
+                </button>
+            )}
+            </Webcam>
+            { photo && (<img src={photo} alt="captured face" />)}
+            <div id="main"></div>
+            <div id="log"></div>
         </section>
     )
 }

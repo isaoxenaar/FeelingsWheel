@@ -1,0 +1,52 @@
+import React, {useEffect, useState} from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import  User from '../Types/User';
+import  EmotionType from '../Types/Emotion';
+
+const Emotion = () => {
+
+const {user} = useAuth0()
+const [thisUser, setUser] = useState<User>();
+const [emotion, setEmotion] = useState<EmotionType>();
+
+const getUser = async () => {
+
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    };
+
+    const response = await fetch(`https://localhost:7189/api/User/${user?.sub}`, requestOptions);
+
+    const person = await response.json();
+
+    console.log("this is person" + person.emotions);
+    
+    const emotions = person.emotions.split(',');
+    const feeling:EmotionType = {};
+    feeling.anger = emotions[0];
+    feeling.contempt = emotions[1];
+    feeling.disgust = emotions[2];
+    feeling.fear = emotions[3];
+    feeling.happiness = emotions[4];
+    feeling.neutral = emotions[5];
+    feeling.sadness = emotions[6];
+    feeling.surprise = emotions[7];
+    console.log("fear" + feeling.fear);
+    console.log("neutral" + feeling.neutral);
+    setUser(person);
+    setEmotion(feeling);
+}
+
+useEffect(() => {}, [])
+return (
+    <div>
+        <button onClick={() => getUser()}>get user</button>
+        {thisUser?.id}
+        {thisUser?.emotion}
+    </div>
+  )
+}
+
+
+export default Emotion

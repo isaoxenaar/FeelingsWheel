@@ -8,5 +8,10 @@ public class Emotion
     public double Neutral { get; set; }
     public double Sadness { get; set; }
     public double Surprise { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Anger},{Contempt},{Disgust},{Fear},{Happiness},{Neutral},{Sadness},{Surprise}";
+    }
     public int UserId { get; set; }
 }

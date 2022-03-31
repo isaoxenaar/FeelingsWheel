@@ -9,7 +9,7 @@ const User = () => {
           <div>
             <p>{user?.name}</p>
             <p>{user?.email}</p>
-            <p>{user?.sub}</p>
+            <p>{user?.sub} </p>
             <img src={user?.picture} />
         </div>)}
     </>

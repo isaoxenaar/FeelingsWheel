@@ -13,12 +13,14 @@ public class FaceService
     {
         return new FaceClient(new ApiKeyServiceClientCredentials(key)) { Endpoint = endpoint };
     }
-    public static async Task<Emotion> DetectFaceExtract(IFaceClient client, string url, string recognitionModel)
+    public static async Task<Emotion> DetectFaceExtract(Stream stream)
     {
-        var detectedFace = await client.Face.DetectWithUrlAsync($"{url}",
+        var client = Authenticate("https://faceapiforfinalproject.cognitiveservices.azure.com/", "9987cfbb45954a61887504b7248773d2");
+
+        var detectedFace = await client.Face.DetectWithStreamAsync(stream,
                 returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Emotion },
                 detectionModel: DetectionModel.Detection01,
-                recognitionModel: recognitionModel);
+                recognitionModel: RECOGNITION_MODEL4);
 
         var face = detectedFace.FirstOrDefault();
 
@@ -34,19 +36,5 @@ public class FaceService
             Surprise = face.FaceAttributes.Emotion.Surprise,
         };
         return emotion;
-    }
-
-    public static Image getImage(string base64)
-    {
-
-        byte[] bytes = Convert.FromBase64String(base64);
-
-        Image image;
-        using (MemoryStream ms = new MemoryStream(bytes))
-        {
-            image = Image.FromStream(ms);
-        }
-
-        return image;
     }
 }

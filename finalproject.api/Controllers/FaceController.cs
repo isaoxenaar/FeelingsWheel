@@ -12,20 +12,32 @@ namespace finalproject.api.Controllers;
 public class FaceController : ControllerBase
 {
     private readonly FaceService _service;
-    public FaceController(FaceService service)
+    private readonly ITableStorageService _table;
+    public FaceController(FaceService service, ITableStorageService table)
     {
         _service = service;
+        _table = table;
     }
 
-    [HttpPost("getResponse")]
-    public async Task<ActionResult<Emotion>> postPicture([FromBody] string url)
+    [HttpPost("{id}/getResponse")]
+    public async Task<ActionResult<Emotion>> postPicture([FromBody] string base64, string id)
     {
-        var photo64 = url;
-        Console.WriteLine("base 64" + photo64);
-        var client = FaceService.Authenticate("https://faceapiforfinalproject.cognitiveservices.azure.com/", "501fd120b8b34c588c4273551b0d2179");
-        var face = await FaceService.DetectFaceExtract(client, url, RecognitionModel.Recognition04);
+        var bytes = Convert.FromBase64String(base64.Substring(base64.IndexOf(',') + 1));
+        var stream = new MemoryStream(bytes);
+        var face = await FaceService.DetectFaceExtract(stream);
+        await _table.InsertOrMergeAsync(new Models.UserEntity()
+        {
+            PartitionKey = id,
+            Name = "aname",
+            Emotions = face.ToString(),
+            RowKey = id,
+            Id = id,
+        });
         return Ok(face);
     }
+
+
+
     [HttpPost("upload")]
     public async Task<IActionResult> uploadPicture(string url)
     {

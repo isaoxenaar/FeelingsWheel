@@ -17,11 +17,11 @@ public class UserController : ControllerBase
 
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     [ActionName(nameof(GetAsync))]
-    public async Task<IActionResult> GetAsync([FromQuery] string name, string id)
+    public async Task<IActionResult> GetAsync(string id)
     {
-        return Ok(await _storageService.RetrieveAsync(name, id));
+        return Ok(await _storageService.RetrieveAsync(id, id));
     }
 
     [HttpPost]
@@ -29,16 +29,9 @@ public class UserController : ControllerBase
     {
         entity.PartitionKey = entity.Name;
         string Id = Guid.NewGuid().ToString();
-        entity.Id = Id;
+        entity.Id = "1";
         entity.RowKey = Id;
         var createdEntity = await _storageService.InsertOrMergeAsync(entity);
         return CreatedAtAction(nameof(GetAsync), createdEntity);
-    }
-
-    [HttpPost("{id}/image")]
-    public async Task<IActionResult> PostPicture(int id, string image)
-    {
-        IFaceClient client = FaceService.Authenticate(Environment.GetEnvironmentVariable("FACEAPI_ENDPOINT"), Environment.GetEnvironmentVariable("FACEAPI_KEY"));
-        return Ok(image);
     }
 }

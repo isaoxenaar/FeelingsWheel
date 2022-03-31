@@ -1,5 +1,5 @@
 import Webcam from 'react-webcam';
-import React, {useRef, useCallback, useState} from 'react';
+import React, {useRef, useCallback, useState, useEffect} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Capture = () => {
@@ -10,8 +10,7 @@ const Capture = () => {
     }
 
     const WebcamRef = useRef<any>(null);
-    
-    const [photo, setPhoto] = useState<any>();
+    const [photo, setPhoto] = useState<string>("");
     const { user } = useAuth0();
     
     const postPhoto = async () => {
@@ -27,12 +26,17 @@ const Capture = () => {
     }
 
     const capture = useCallback(() => {
-        const photob64 = WebcamRef.current.getScreenshot();
+        let photob64 = WebcamRef.current.getScreenshot();
+        // maybe this? => setPhoto(WebcamRef.current.getScreenshot());
+        console.log(typeof photob64)
         console.log(photob64, " in usecallback");
-        setPhoto(photob64);
+        setPhoto(() => photob64);
         console.log(photo, " state");
-        postPhoto();
     }, [WebcamRef, setPhoto]);
+
+    useEffect(() =>{
+        postPhoto()
+    },[photo])
 
     return (
         <section>

@@ -3,7 +3,6 @@ using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 using System.Text.RegularExpressions;
 using System.Drawing;
 
-
 namespace finalproject.api.Services;
 
 public class FaceService

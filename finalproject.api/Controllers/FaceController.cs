@@ -23,17 +23,22 @@ public class FaceController : ControllerBase
     public async Task<ActionResult<Emotion>> postPicture([FromBody] string base64, string id)
     {
         var bytes = Convert.FromBase64String(base64.Substring(base64.IndexOf(',') + 1));
-        var stream = new MemoryStream(bytes);
-        var face = await FaceService.DetectFaceExtract(stream);
+        Console.WriteLine(base64);
+        Emotion emotion;
+        using (var s = new MemoryStream(bytes))
+        {
+            emotion = await FaceService.DetectFaceExtract(s);
+            Console.WriteLine(emotion.ToString());
+        }
         await _table.InsertOrMergeAsync(new Models.UserEntity()
         {
             PartitionKey = id,
             Name = "aname",
-            Emotions = face.ToString(),
+            Emotions = emotion.ToString(),
             RowKey = id,
             Id = id,
         });
-        return Ok(face);
+        return Ok(emotion);
     }
 
 

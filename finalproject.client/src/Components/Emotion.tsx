@@ -1,13 +1,24 @@
-import React, {useEffect, useState} from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
+import React, {useEffect, useState} from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import Graph from "./Graph";
 import  User from '../Types/User';
 import  EmotionType from '../Types/Emotion';
+import Graph2 from './Graph2';
 
 const Emotion = () => {
 
 const {user} = useAuth0()
 const [thisUser, setUser] = useState<User>();
-const [emotion, setEmotion] = useState<EmotionType>();
+const [emotion, setEmotion] = useState<EmotionType>({
+        anger: "0",
+        contempt: "0",
+        disgust: "0",
+        fear: "0",
+        happiness: "0",
+        neutral: "0",
+        sadness: "0",
+        surprise: "0"
+});
 
 const getUser = async () => {
 
@@ -23,15 +34,16 @@ const getUser = async () => {
     console.log("this is person" + person.emotions);
     
     const emotions = person.emotions.split(',');
-    const feeling:EmotionType = {};
-    feeling.anger = emotions[0];
-    feeling.contempt = emotions[1];
-    feeling.disgust = emotions[2];
-    feeling.fear = emotions[3];
-    feeling.happiness = emotions[4];
-    feeling.neutral = emotions[5];
-    feeling.sadness = emotions[6];
-    feeling.surprise = emotions[7];
+    const feeling: EmotionType = {
+        anger: emotions[0],
+        contempt: emotions[1],
+        disgust: emotions[2],
+        fear: emotions[3],
+        happiness: emotions[4],
+        neutral: emotions[5],
+        sadness: emotions[6],
+        surprise: emotions[7]
+    };
     console.log("fear" + feeling.fear);
     console.log("neutral" + feeling.neutral);
     setUser(person);
@@ -44,6 +56,8 @@ return (
         <button onClick={() => getUser()}>get user</button>
         {thisUser?.id}
         {thisUser?.emotion}
+        <Graph feeling={emotion} />
+        <Graph2 feeling={emotion} />
     </div>
   )
 }

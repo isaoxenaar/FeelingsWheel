@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj": {}
+    "C:\\Grenness\\salt-labs\\GraduationProject\\finalproject.api\\finalproject.api.csproj": {}
   },
   "projects": {
-    "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj": {
+    "C:\\Grenness\\salt-labs\\GraduationProject\\finalproject.api\\finalproject.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj",
+        "projectUniqueName": "C:\\Grenness\\salt-labs\\GraduationProject\\finalproject.api\\finalproject.api.csproj",
         "projectName": "finalproject.api",
-        "projectPath": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj",
-        "packagesPath": "/Users/salt-dev/.nuget/packages/",
-        "outputPath": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/obj/",
+        "projectPath": "C:\\Grenness\\salt-labs\\GraduationProject\\finalproject.api\\finalproject.api.csproj",
+        "packagesPath": "C:\\Users\\Jon\\.nuget\\packages\\",
+        "outputPath": "C:\\Grenness\\salt-labs\\GraduationProject\\finalproject.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/salt-dev/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Jon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

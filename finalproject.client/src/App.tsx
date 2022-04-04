@@ -10,22 +10,21 @@ import './App.css';
 function App() {
   const {isAuthenticated} = useAuth0();
   return (
-    <>
-      {!isAuthenticated ? (
+    <section className="app--Login">
+      <div className="app--LoginBtn">{!isAuthenticated ? (
         <LoginButton/>
       ) : (
         <div className="App">
-          <header role='header'>
-            <LogoutButton />
-            <User />
+          <header className='main--header'>
             Wheel of feelings.
           </header>
-          
           <Capture />
           <Emotion />
+          <User />
         </div>
       )}
-    </>
+      </div>
+    </section>
   );
 }
 

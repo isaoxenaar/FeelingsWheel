@@ -1,0 +1,31 @@
+.charts {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+.charts__radar {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+/* 
+
+
+.charts__radial {
+  padding: 3em;
+  border: 1px solid black;
+  border-radius: 5em;
+  margin: 1em;
+}
+
+.charts__pie {
+  padding: 3em;
+  border: 1px solid black;
+  border-radius: 5em;
+  margin: 1em;
+} */

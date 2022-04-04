@@ -1,4 +1,28 @@
 .webcam {
-  background: black;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
   margin: 2rem;
+}
+#webcam--camPlusBtn {
+  display: flex;
+  flex-flow: column;
+}
+#captureBtn {
+  margin: 2em 2em;
+  border-style: solid;
+  border-color: black;
+  border-radius: 1em;
+  padding: 0.7em 0.7em;
+  background-color: white;
+  font-size: 25px;
+  font-style: bold;
+  font-family: "Palette Mosaic", cursive;
+}
+#captureBtn:hover {
+  background-color: black;
+  color: white;
+}
+#captureImg {
+  margin-left: 10em;
 }

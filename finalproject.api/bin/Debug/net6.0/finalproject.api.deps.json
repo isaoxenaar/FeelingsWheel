@@ -115,12 +115,12 @@
           "runtimes/win7-x64/native/Cosmos.CRTCompat.dll": {
             "rid": "win7-x64",
             "assetType": "native",
-            "fileVersion": "2.0.0.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win7-x64/native/Microsoft.Azure.Documents.ServiceInterop.dll": {
             "rid": "win7-x64",
             "assetType": "native",
-            "fileVersion": "2.11.2.0"
+            "fileVersion": "0.0.0.0"
           }
         }
       },

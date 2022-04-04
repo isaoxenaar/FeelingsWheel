@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
+import LogoutButton from '../LogoutButton';
 import './User.css';
 
 const User = () => {
@@ -7,11 +8,14 @@ const User = () => {
   return (
     <>
       {isAuthenticated && (
-          <div>
-            <p>{user?.name}</p>
-            <p>{user?.email}</p>
-            <img src={user?.picture} />
-        </div>)}
+        <section className='profile'>
+          <section > 
+            <img className='avatar' src={user?.picture} />
+            <p className='username'>{user?.name}</p>
+            <p className='email'>{user?.email}</p>
+          </section>
+          <LogoutButton />
+        </section>)}
     </>
   );
 }

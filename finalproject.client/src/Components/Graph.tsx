@@ -17,7 +17,7 @@ const Graph: FC<IProps> = ({feeling}:IProps) => {
         const height = parseInt(d3.select('#graph').style('height'));
         const radius = Math.min(width, height) / 2 - 20;
         const svg = d3.select(d3Pie.current).attr("width", width)
-            .attr("height", height).style("background-color", "yellow")
+            .attr("height", height).style("background-color", "white")
             .append("g")
             .attr("transform", "translate("+width/2+","+height/2+")");
         
@@ -34,7 +34,7 @@ const Graph: FC<IProps> = ({feeling}:IProps) => {
         const data2 = ['1', '2', '3', '4', '5', '6', '7', '8'];
         const color = d3.scaleOrdinal().domain(data.map((d:any) => d.value)).range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#abba91", "#322102", "#124ef9"])
         const pie = d3.pie().value((d:any) => d.value)
-        const data_ready = pie(d3.entries(data))
+        //const data_ready = pie(d3.entries(data))
         
     }, [])
     //d3.pie({valueOf(feelings)})

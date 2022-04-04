@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
+import './Emotion.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import Graph from "../Graph";
 import  User from '../../Types/User';
 import  EmotionType from '../../Types/Emotion';
 import Graph2 from '../Graph2';
-import './Emotion.css';
 
 const Emotion = () => {
 
@@ -31,8 +31,6 @@ const getUser = async () => {
     const response = await fetch(`https://localhost:7189/api/User/${user?.sub}`, requestOptions);
 
     const person = await response.json();
-
-    console.log("this is person" + person.emotions);
     
     const emotions = person.emotions.split(',');
     const feeling: EmotionType = {
@@ -45,19 +43,15 @@ const getUser = async () => {
         sadness: emotions[6],
         surprise: emotions[7]
     };
-    console.log("fear" + feeling.fear);
-    console.log("neutral" + feeling.neutral);
     setUser(person);
     setEmotion(feeling);
 }
 
 useEffect(() => {}, [])
 return (
-    <div>
-        <button onClick={() => getUser()}>get user</button>
-        {thisUser?.id}
-        {thisUser?.emotion}
-        <Graph feeling={emotion} />
+    <div className={"emotions"}>
+        <button id="emotions--Btn" onClick={() => getUser()}>get emotions</button>
+        {/* <Graph feeling={emotion} /> */}
         <Graph2 feeling={emotion} />
     </div>
   )

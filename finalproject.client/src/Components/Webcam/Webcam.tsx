@@ -2,12 +2,13 @@ import Webcam from 'react-webcam';
 import React, {useRef, useCallback, useState, useEffect} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './Webcam.css';
+import { AspectRatio } from '@cloudinary/url-gen/qualifiers';
 
 const Capture = () => {
     const videoConstraints = {
-        width: 100, 
-        height: 100, 
-        facingMode: "user"
+        width: 300, 
+        height: 300, 
+        facingMode: "user",
     }
 
     const WebcamRef = useRef<any>(null);
@@ -15,8 +16,6 @@ const Capture = () => {
     const { user } = useAuth0();
     
     const postPhoto = async () => {
-        console.log("typeof: ", typeof photo);
-        console.log(photo, "in post photo");
         await fetch(`https://localhost:7189/api/Face/${user?.sub}/getResponse`, {
             method: 'POST',
             headers: {
@@ -28,12 +27,8 @@ const Capture = () => {
 
     const capture = useCallback(() => {
         let photob64 = WebcamRef.current.getScreenshot();
-        // maybe this? => setPhoto(WebcamRef.current.getScreenshot());
-        console.log(typeof photob64)
-        console.log(photob64, " in usecallback");
         setPhoto(() => photob64);
-        console.log(photo, " state");
-    }, [WebcamRef, setPhoto]);
+        }, [WebcamRef, setPhoto]);
 
     useEffect(() =>{
         postPhoto()
@@ -41,6 +36,7 @@ const Capture = () => {
 
     return (
         <section className='webcam'>
+            <div id="webcam--camPlusBtn">
             <Webcam 
                 audio={false}
                 mirrored={true}
@@ -49,14 +45,15 @@ const Capture = () => {
                 videoConstraints={videoConstraints}
             >
             {({ getScreenshot }) => (
-                <button onClick={capture}>
+                <button id={'captureBtn'}onClick={capture}>
                     Capture Photo
                 </button>
             )}
             </Webcam>
-            { photo && (<img src={photo} alt="captured face" />)}
-            <div id="main"></div>
-            <div id="log"></div>
+            </div>
+            <div id="log">
+            { photo && (<img id={'captureImg'}src={photo} alt="captured face" />)}
+            </div>
         </section>
     )
 }

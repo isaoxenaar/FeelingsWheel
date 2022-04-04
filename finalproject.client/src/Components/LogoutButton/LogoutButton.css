@@ -3,3 +3,19 @@
   align-self: flex-end;
   min-width: fit-content;
 }
+.logout__button {
+  margin: 2em 2em;
+  align-items: center;
+  border-style: solid;
+  border-color: black;
+  border-radius: 1em;
+  padding: 0.7em 0.7em;
+  background-color: white;
+  font-size: 25px;
+  font-style: bold;
+  font-family: "Palette Mosaic", cursive;
+}
+.logout__button:hover {
+  background-color: black;
+  color: white;
+}

@@ -8,10 +8,11 @@ public class Emotion
     public double Neutral { get; set; }
     public double Sadness { get; set; }
     public double Surprise { get; set; }
+    public DateTime Time { get; set; } = DateTime.Now;
 
     public override string ToString()
     {
-        return $"{Anger},{Contempt},{Disgust},{Fear},{Happiness},{Neutral},{Sadness},{Surprise}";
+        return $"{Anger},{Contempt},{Disgust},{Fear},{Happiness},{Neutral},{Sadness},{Surprise},{Time}";
     }
     public int UserId { get; set; }
 }

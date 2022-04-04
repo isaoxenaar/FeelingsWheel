@@ -7,6 +7,7 @@ type EmotionType = {
     neutral:string;
     sadness:string;
     surprise:string;
+    time:Date;
 }
 
 export default EmotionType;

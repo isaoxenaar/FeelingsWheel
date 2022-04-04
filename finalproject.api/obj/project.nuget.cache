@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bYAh+3vAAEBMv7tn15gZVpTxuE+F6g6NKnckIvbs5Xv/0kMATIPohyUe4HXKhR/06EPcqs9QCW7dMY6kT4+Erg==",
+  "dgSpecHash": "qALXK8G/1xxCVrB34cRlJSy/xarO8gKXoX4Vi/FCE8ez7qBj9qpPPydcikIak4LZe/irAjiUHsp+qvlC9VdokA==",
   "success": true,
   "projectFilePath": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "/Users/salt-dev/.nuget/packages/microsoft.azure.cosmos.table/1.0.8/microsoft.azure.cosmos.table.1.0.8.nupkg.sha512",
     "/Users/salt-dev/.nuget/packages/microsoft.azure.documentdb.core/2.11.2/microsoft.azure.documentdb.core.2.11.2.nupkg.sha512",
     "/Users/salt-dev/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "/Users/salt-dev/.nuget/packages/microsoft.cognitiveservices.speech/1.20.0/microsoft.cognitiveservices.speech.1.20.0.nupkg.sha512",
     "/Users/salt-dev/.nuget/packages/microsoft.csharp/4.3.0/microsoft.csharp.4.3.0.nupkg.sha512",
     "/Users/salt-dev/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/Users/salt-dev/.nuget/packages/microsoft.netcore.platforms/1.1.1/microsoft.netcore.platforms.1.1.1.nupkg.sha512",

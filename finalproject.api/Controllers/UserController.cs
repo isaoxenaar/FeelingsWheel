@@ -23,15 +23,4 @@ public class UserController : ControllerBase
     {
         return Ok(await _storageService.RetrieveAsync(id, id));
     }
-
-    [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] UserEntity entity)
-    {
-        entity.PartitionKey = entity.Name;
-        string Id = Guid.NewGuid().ToString();
-        entity.Id = "1";
-        entity.RowKey = Id;
-        var createdEntity = await _storageService.InsertOrMergeAsync(entity);
-        return CreatedAtAction(nameof(GetAsync), createdEntity);
-    }
 }

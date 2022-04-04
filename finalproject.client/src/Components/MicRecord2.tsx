@@ -21,7 +21,6 @@ const MicRecord2 = () => {
     const downloader = () => {
         console.log("this is blob" + blobblob.size);
         Recorder.download((blobblob), 'my-audio-file'); // downloads a .wav file
-        Recorder.
     }
     
     const startRecording = () => {

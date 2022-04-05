@@ -23,4 +23,6 @@ public class UserController : ControllerBase
     {
         return Ok(await _storageService.RetrieveAsync(id, id));
     }
+
+    //delete
 }

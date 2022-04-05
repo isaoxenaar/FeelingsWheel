@@ -2,50 +2,18 @@ import React, { useState } from 'react'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import EmotionType from '../../Types/Emotion';
 
-const dummyData = [
-  {
-    anger: 0.2,
-    happiness: 0.5,
-    time: 1
-  },
-  {
-    anger: 0.5,
-    happiness: 0.1,
-    time: 2
-  },
-  {
-    anger: 0.8,
-    happiness: 1.0,
-    time: 3
-  },
-  {
-    anger: 0.2,
-    happiness: 0.5,
-    time: 4
-  },
-  {
-    anger: 0.3,
-    happiness: 0.3,
-    time: 5
-  },
-  {
-    anger: 0.9,
-    happiness: 0.1,
-    time: 6
-  },
-];
 
 const LineGraph = ({data}: {data:EmotionType[]}) => {
     const chartData = data.map(t => {
         t.timeFormatted = new Date(t.time).toLocaleString();
-        t.contempt *= 100;
-        t.fear *= 100;
-        t.neutral *= 100;
-        t.anger *= 100;
-        t.sadness *= 100;
-        t.surprise *= 100;
-        t.disgust *= 100;
-        t.happiness *= 100;
+        t.contempt = parseFloat((t.contempt * 100).toPrecision(3));
+        t.fear = parseFloat((t.fear * 100).toPrecision(3));
+        t.neutral = parseFloat((t.neutral * 100).toPrecision(3));
+        t.anger = parseFloat((t.anger * 100).toPrecision(3));
+        t.sadness = parseFloat((t.sadness * 100).toPrecision(3));
+        t.surprise = parseFloat((t.surprise * 100).toPrecision(3));
+        t.disgust = parseFloat((t.disgust * 100).toPrecision(3));
+        t.happiness = parseFloat((t.happiness * 100).toPrecision(3));
         return t;
     })
   return (

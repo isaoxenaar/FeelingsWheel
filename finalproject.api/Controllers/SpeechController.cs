@@ -1,7 +1,13 @@
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CognitiveServices.Speech;
+using finalproject.api.Services;
 using Microsoft.CognitiveServices.Speech.Audio;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Web;
+
+namespace finalproject.api;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -11,49 +17,61 @@ public class SpeechController : ControllerBase
     static string YourServiceRegion = "westeurope";
 
     private readonly SpeechService _service;
-    public SpeechController(SpeechService service)
+    private readonly ITableStorageService _table;
+
+    public SpeechController(SpeechService service, ITableStorageService table)
     {
         _service = service;
+        _table = table;
     }
 
-    [HttpPost]
-    public async Task postAudio()
+    [HttpPost("{id}")]
+    public async Task<ActionResult<object>> postAudio(string id)
     {
+        var user = await _table.RetrieveAsync(id, id);
+
         var speechConfig = SpeechConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
         speechConfig.SpeechRecognitionLanguage = "en-US";
 
-        //using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
         using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
         using var speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
         Console.WriteLine("Speak into your microphone.");
         var speechRecognitionResult = await speechRecognizer.RecognizeOnceAsync();
-        _service.OutputSpeechRecognitionResult(speechRecognitionResult);
-    }
-}
-class AudioInputCallback : PullAudioInputStreamCallback
-{
-    private readonly MemoryStream memoryStream;
+        Console.WriteLine("restuls" + speechRecognitionResult.Text.ToLower());
+        var response = speechRecognitionResult.Text.ToLower();
 
-    public AudioInputCallback(MemoryStream stream)
+        var txtSentiment = await GetTextSentiment(speechRecognitionResult.Text);
+
+        Console.WriteLine(txtSentiment);
+
+        await _table.InsertOrMergeAsync(new Models.UserEntity()
+        {
+            PartitionKey = id,
+            Emotions = user.Emotions,
+            textEmotion = response,
+            textSentiment = txtSentiment,
+            RowKey = id,
+            Id = id,
+        });
+
+        var obj = JsonConvert.SerializeObject(response);
+        return Ok(obj);
+    }
+
+    public async Task<string> GetTextSentiment(string inputText)
     {
-        this.memoryStream = stream;
+        var text = HttpUtility.UrlEncode(inputText);
+        var key = "d26601afef30b515273b6690228be191b3d1dd43";
+        var url = $"https://api.kenzyai.com/?key={key}&text={text}";
+        var apiResponse = "";
+        using (var httpClient = new HttpClient())
+        {
+            using (var response = await httpClient.GetAsync(url))
+            {
+                apiResponse = await response.Content.ReadAsStringAsync();
+            }
+        }
+        return apiResponse;
     }
-
-    public override int Read(byte[] dataBuffer, uint size)
-    {
-        return this.Read(dataBuffer, 0, dataBuffer.Length);
-    }
-
-    private int Read(byte[] buffer, int offset, int count)
-    {
-        return memoryStream.Read(buffer, offset, count);
-    }
-
-    public override void Close()
-    {
-        memoryStream.Close();
-        base.Close();
-    }
-
 }

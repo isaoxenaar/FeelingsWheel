@@ -6,6 +6,7 @@ import EmotionType from '../../Types/Emotion';
 import Select from 'react-select';
 import { Graphs } from '../Graphs/Graphs';
 import LineGraph from '../Graphs/LineGraph';
+import CustomChart from '../CustomChart';
 
 const options = [
   { value: 'pieChart', label: 'Pie Chart' },
@@ -56,6 +57,7 @@ const Emotion = () => {
       };
       return feeling;
     });
+    console.log("person in get " + person.textEmotion);
     setUser(person);
     setEmotions(feelings);
   };
@@ -70,6 +72,7 @@ const Emotion = () => {
       <Select options={options as any} value={selectedOption} onChange={e => setSelectedOption(e!)} />
       <Graphs feeling={emotions[emotions.length - 1]} type={selectedOption.value} />
       <LineGraph data={emotions}/>
+      {/* <CustomChart feeling={emotions}/> */}
     </div>
   );
 };

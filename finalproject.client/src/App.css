@@ -13,3 +13,12 @@
   display: flex;
   justify-content: center;
 }
+
+.app--loginPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Palette Mosaic", cursive;
+  font-size: 1em;
+}

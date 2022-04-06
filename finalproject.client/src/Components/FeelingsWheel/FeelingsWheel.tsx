@@ -19,19 +19,11 @@ const FeelingsWheel = () => {
     }
 
     useEffect(() => {
-        const feelingNr = Math.round(degree / 0.21) > 68 ? Math.round(degree / 0.21) % 68 : Math.round(degree / 0.21);
+        const feelingNr = degree / 0.2 > 68 ? Math.round(degree / 0.2) % 68 : Math.round(degree / 0.2);
+        //const core = degree / 6 > 6 ? degree % 6 : degree / 6;
+        console.log(feelingNr);
         setFeeling(feelingNr);       
     } ,[degree, feeling])
-
-    // const stopper = () => {
-    //     setStop(false);
-    //     const wheel = document.getElementById('feelingsWheel');
-    //     // wheel?.setAttribute('class', 'paused' );
-    //     if (wheel?.style.animationPlayState === 'running') 
-    //         wheel?.setAttribute("style", "animation-play-state: paused");
-    //     else
-    //         wheel?.setAttribute("style", "animation-play-state: running");
-    // }
 
     return (
         <>
@@ -49,6 +41,7 @@ export default FeelingsWheel
 //1. press the wheel, the button. 
 //2. settime(Math.Random): css changes for amount of time (wheel spins): wheel stops: read the degrees it has spun. 
 //3. calculate degree by time. 
-//15 / 360 = 0.04. 1 feeling is 360 / 68 = 5,3 degree. 0.212 sec per emotion. ie. 9 (second rotation time) / 0.2 (sec pr emotion) = 45 deg. emotion nr 45. 
+//13.6 / 360 = 0.0377. 1 feeling is 360 / 68 = 5,3 degree. 0.200 sec per emotion. ie. 9 (second rotation time) / 0.2 (sec pr emotion) = 45. emotion nr 45. 
 //360 degrees in 15 sec. keep track of amount of time the wheel has spun, modulus 15s, divided by remaining seconds 
 //1. (number of seconds since start) % 15. 
+//5.3 X 

@@ -61,7 +61,7 @@ const MicRecord = () => {
                 lastModified: Date.now()
               });
               var url = window.URL.createObjectURL(blob);
-              var li = document.createElement('li');
+              var div = document.createElement('div');
               var au = document.createElement('audio');
               var hf = document.createElement('a');
         
@@ -70,9 +70,10 @@ const MicRecord = () => {
               hf.href = url;
               hf.download = new Date().toISOString() + '.wav';
               hf.innerHTML = hf.download;
-              li.appendChild(au);
-              li.appendChild(hf);
-              recordingslist.appendChild(li);
+              div.appendChild(au);
+              div.appendChild(hf);
+              const main = document.getElementById('mic--Main');
+              main?.appendChild(div);
               const music = new Audio(file.name);
               music.play();
               setSound(url);

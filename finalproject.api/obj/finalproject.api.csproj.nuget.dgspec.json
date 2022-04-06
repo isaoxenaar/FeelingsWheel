@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/salt-dev/Desktop/Salt-Labs/FeelingsWheel/GraduationProject/finalproject.api/finalproject.api.csproj": {}
+    "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj": {}
   },
   "projects": {
-    "/Users/salt-dev/Desktop/Salt-Labs/FeelingsWheel/GraduationProject/finalproject.api/finalproject.api.csproj": {
+    "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/salt-dev/Desktop/Salt-Labs/FeelingsWheel/GraduationProject/finalproject.api/finalproject.api.csproj",
+        "projectUniqueName": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj",
         "projectName": "finalproject.api",
-        "projectPath": "/Users/salt-dev/Desktop/Salt-Labs/FeelingsWheel/GraduationProject/finalproject.api/finalproject.api.csproj",
+        "projectPath": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/finalproject.api.csproj",
         "packagesPath": "/Users/salt-dev/.nuget/packages/",
-        "outputPath": "/Users/salt-dev/Desktop/Salt-Labs/FeelingsWheel/GraduationProject/finalproject.api/obj/",
+        "outputPath": "/Users/salt-dev/Documents/SaltRepos/FinalProject/finalproject.api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/salt-dev/.nuget/NuGet/NuGet.Config"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import FeelingsWheel from "./FeelingsWheel/FeelingsWheel";
+import FeelingsWheel from "./FeelingsWheel";
 
 const Home = () => {
   return (

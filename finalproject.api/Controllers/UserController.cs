@@ -24,5 +24,11 @@ public class UserController : ControllerBase
         return Ok(await _storageService.RetrieveAsync(id, id));
     }
 
-    //delete
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> RemoveDataAsync(string id)
+    {
+        var user = await _storageService.RetrieveAsync(id, id);
+        await _storageService.DeleteAsync(user);
+        return NoContent();
+    }
 }

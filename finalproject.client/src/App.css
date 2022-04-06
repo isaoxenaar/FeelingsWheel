@@ -1,10 +1,10 @@
-.main--header {
+.app--Header {
   margin: 1em 1em;
   text-align: center;
   font-family: "Palette Mosaic", cursive;
-  font-size: 5vw;
+  font-size: 7vw;
 }
-.App {
+.app--App {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -13,7 +13,21 @@
   display: flex;
   justify-content: center;
 }
-
+.app--Footer {
+  font-family: 'Spectral', serif;
+  padding-top: 2.5em;
+  font-size: 1.8vw;
+}
+.app--Nav {
+  font-family: 'Spectral', serif;
+  padding-top: 2.5em;
+  font-size: 1.8vw;
+}
+a {
+  text-decoration: none;
+  color: black;
+  margin: 0.5em 0.5em;
+}
 .app--loginPage {
   display: flex;
   flex-direction: column;

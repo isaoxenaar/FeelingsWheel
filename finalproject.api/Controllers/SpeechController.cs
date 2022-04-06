@@ -41,7 +41,7 @@ public class SpeechController : ControllerBase
         Console.WriteLine("restuls" + speechRecognitionResult.Text.ToLower());
         var response = speechRecognitionResult.Text.ToLower();
 
-        var txtSentiment = await GetTextSentiment(speechRecognitionResult.Text);
+        var txtSentiment = await _service.GetTextSentiment(speechRecognitionResult.Text);
 
         Console.WriteLine(txtSentiment);
 
@@ -59,19 +59,4 @@ public class SpeechController : ControllerBase
         return Ok(obj);
     }
 
-    public async Task<string> GetTextSentiment(string inputText)
-    {
-        var text = HttpUtility.UrlEncode(inputText);
-        var key = "d26601afef30b515273b6690228be191b3d1dd43";
-        var url = $"https://api.kenzyai.com/?key={key}&text={text}";
-        var apiResponse = "";
-        using (var httpClient = new HttpClient())
-        {
-            using (var response = await httpClient.GetAsync(url))
-            {
-                apiResponse = await response.Content.ReadAsStringAsync();
-            }
-        }
-        return apiResponse;
-    }
 }

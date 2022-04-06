@@ -6,7 +6,7 @@ import EmotionType from '../../Types/Emotion';
 import Select from 'react-select';
 import { Graphs } from '../Graphs/Graphs';
 import LineGraph from '../Graphs/LineGraph';
-import CustomChart from '../CustomChart';
+import CustomChart from '../TryOutGraphs/CustomChart';
 
 const options = [
   { value: 'pieChart', label: 'Pie Chart' },

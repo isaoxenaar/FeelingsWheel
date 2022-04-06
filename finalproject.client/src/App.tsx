@@ -1,18 +1,20 @@
 import React from 'react';
-import LoginButton from './Components/LoginButton/';
-import LogoutButton from './Components/LogoutButton/';
+import './App.css';
+import Home from './Components/Home';
+import { Link, Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Emotion from './Components/Emotion/';
 import User from './Components/User/';
-import MicRecord from './Components/MicRecord';
+import MicRecord from './Components/Mic/MicRecord';
+import Capture from './Components/Webcam';
+import LoginButton from './Components/LoginButton/';
 import { useAuth0 } from '@auth0/auth0-react';
-import Capture from './Components/Webcam/';
-import './App.css';
 
 function App() {
   const {isAuthenticated} = useAuth0();
 
   return (
-    <section className='app--Login'>
+    <>
+    <main className='app--Login'>
       <div className="app--LoginBtn">{!isAuthenticated ? (
         <>
           <div className='app--loginPage'>
@@ -23,18 +25,32 @@ function App() {
           </div>
         </>
       ) : (
-        <div className='App'>
-          <header className='main--header'>
+        <section className='app--App'>
+          <header className='app--Header'>
             Wheel of feelings.
+            <nav className="app--Nav"> 
+              <Link to={"/"}>Home</Link>
+              <Link to={"/User"}>User</Link>
+              <Link to={"/Analysis"}>Emotions</Link>
+              <Link to={"/Record"}>Record</Link>
+              <Link to={"/Photo"}>Photo</Link>
+            </nav>
           </header>
-          <MicRecord />
-          <Capture />
-          <Emotion />
-          <User />
-        </div>
+          <Routes>
+              <Route path="/" element={<><Home/></>}></Route>
+              <Route path="/User" element={<User />}></Route>
+              <Route path="/Photo" element={<Capture/>}></Route>
+              <Route path="/Record" element={<MicRecord/>}></Route>
+              <Route path="/Emotion" element={<Emotion/>}></Route>
+          </Routes>
+        </section>
       )}
       </div>
-    </section>
+    </main>
+    <footer className="app--Footer">
+        based on the feelings wheel by Gloria Willcox.   
+    </footer>
+    </>
   );
 }
 

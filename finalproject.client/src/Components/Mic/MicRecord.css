@@ -1,0 +1,36 @@
+.mic--Main {
+ display: flex;
+ flex-flow: column;
+}
+.mic--Title {
+    font-family: 'Spectral', serif;
+}
+.mic--Advice {
+    font-family: 'Spectral', serif;
+    margin-left: 3em;
+}
+.mic--Buttons {
+    display: flex;
+    flex-flow: row;
+}
+.mic--startBtn, .mic--stopBtn {
+    align-self: flex-end;
+    min-width: fit-content;
+}
+.mic--startBtn, .mic--stopBtn {
+    margin: 1em 1em;
+    align-items: center;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1em;
+    padding: 0.7em 0.7em;
+    background-color: white;
+    font-size: 25px;
+    font-style: bold;
+    font-family: "Palette Mosaic", cursive;
+}
+.mic--startBtn:hover, .mic--stopBtn:hover {
+    background-color: black;
+    color: white;
+}
+  

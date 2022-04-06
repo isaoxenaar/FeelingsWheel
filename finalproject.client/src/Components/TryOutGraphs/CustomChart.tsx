@@ -1,6 +1,6 @@
 import React, {FC, useRef, useEffect, useState} from "react";
-import  EmotionType from '../Types/Emotion';
-import Data from '../Types/FeelingData';
+import  EmotionType from '../../Types/Emotion';
+import Data from '../../Types/FeelingData';
 import {
     pie,
     arc
@@ -22,7 +22,7 @@ const CustomChart: FC<IProps> = ({feeling}:IProps) => {
         const height = parseInt(d3.select('#graph').style('height'));
         const radius = Math.min(width, height) / 2 - 20;
         const svg = d3.select(d3Pie.current).attr("width", width)
-            .attr("height", height).style("background-color", "white")
+            .attr("height", height).style("background-color", "yellow")
             .append("g")
             .attr("transform", "translate("+width/2+","+height/2+")");
         
@@ -43,7 +43,7 @@ const CustomChart: FC<IProps> = ({feeling}:IProps) => {
         // const data_ready = pie(data);
         let myArc: Arc<any, any> = arc().innerRadius(0).outerRadius(radius);
         let color = d3.scaleOrdinal().range(d3.schemeSet2);
-        let arcs = svg.selectAll('whatever').data(pie);
+        let arcs = svg.selectAll('whatever').data([1, 2, 3, 4, 5]);
         let newBlock = arcs.enter();
 
         newBlock

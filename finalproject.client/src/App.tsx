@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-    <main className='app--Login'>
+    <main id='app--Login'>
       <div className="app--LoginBtn">{!isAuthenticated ? (
         <>
           <div className='app--loginPage'>
@@ -31,7 +31,7 @@ function App() {
             <nav className="app--Nav"> 
               <Link to={"/"}>Home</Link>
               <Link to={"/User"}>User</Link>
-              <Link to={"/Analysis"}>Emotions</Link>
+              <Link to={"/Emotion"}>Emotions</Link>
               <Link to={"/Record"}>Record</Link>
               <Link to={"/Photo"}>Photo</Link>
             </nav>
@@ -48,7 +48,7 @@ function App() {
       </div>
     </main>
     <footer className="app--Footer">
-        based on the feelings wheel by Gloria Willcox.   
+        Based on the feelings wheel by Gloria Willcox.   
     </footer>
     </>
   );

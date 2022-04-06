@@ -61,7 +61,9 @@ public class FaceController : ControllerBase
         await _table.InsertOrMergeAsync(new Models.UserEntity()
         {
             PartitionKey = id,
-            Emotions = user.Emotions, //emotionsString.
+            Emotions = user.Emotions, 
+            textEmotion = user.textEmotion,
+            textSentiment = user.textSentiment,
             RowKey = id,
             Id = id,
         });

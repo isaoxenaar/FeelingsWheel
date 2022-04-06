@@ -9,11 +9,13 @@
   flex-flow: column;
   align-items: center;
 }
-.app--Login {
+#app--Login {
   display: flex;
   justify-content: center;
 }
 .app--Footer {
+  display: flex;
+  justify-content: center;
   font-family: 'Spectral', serif;
   padding-top: 2.5em;
   font-size: 1.8vw;

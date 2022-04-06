@@ -26,6 +26,9 @@ public class SpeechService
                 break;
         }
     }
+
+  
+    
     // public static string OutputSpeechRecognitionResult(SpeechRecognitionResult speechRecognitionResult)
     // {
     //     switch (speechRecognitionResult.Reason)

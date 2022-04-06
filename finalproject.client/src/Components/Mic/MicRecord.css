@@ -1,6 +1,7 @@
 .mic--Main {
  display: flex;
  flex-flow: column;
+ background-color: "white";
 }
 .mic--Title {
     font-family: 'Spectral', serif;

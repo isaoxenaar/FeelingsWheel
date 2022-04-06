@@ -24,7 +24,7 @@ public class SpeechController : ControllerBase
         _service = service;
         _table = table;
     }
-
+    
     [HttpPost("{id}")]
     public async Task<ActionResult<object>> postAudio(string id)
     {
@@ -37,13 +37,15 @@ public class SpeechController : ControllerBase
         using var speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
         Console.WriteLine("Speak into your microphone.");
+        
         var speechRecognitionResult = await speechRecognizer.RecognizeOnceAsync();
-        Console.WriteLine("restuls" + speechRecognitionResult.Text.ToLower());
+        //speechRecognizer.StopContinuousRecognitionAsync();
+        Console.WriteLine("Speech detected: " + speechRecognitionResult.Text.ToLower());
         var response = speechRecognitionResult.Text.ToLower();
 
         var txtSentiment = await _service.GetTextSentiment(speechRecognitionResult.Text);
 
-        Console.WriteLine(txtSentiment);
+        // Console.WriteLine(txtSentiment);
 
         await _table.InsertOrMergeAsync(new Models.UserEntity()
         {
@@ -58,5 +60,61 @@ public class SpeechController : ControllerBase
         var obj = JsonConvert.SerializeObject(response);
         return Ok(obj);
     }
-
 }
+    //[HttpPost("/test")]
+
+    // public async Task test()
+    // {
+    //     var speechConfig = SpeechConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
+    //     speechConfig.SpeechRecognitionLanguage = "en-US";
+
+    //     using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+    //     using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+    //     var stopRecognition = new TaskCompletionSource<int>();
+
+    //     recognizer.Recognizing += (s, e) =>
+    //     {
+    //         Console.WriteLine($"RECOGNIZING: Text={e.Result.Text}");
+    //     };
+
+    //     recognizer.Recognized += (s, e) =>
+    //     {
+    //         if (e.Result.Reason == ResultReason.RecognizedSpeech)
+    //         {
+    //             Console.WriteLine($"RECOGNIZED: Text={e.Result.Text}");
+    //         }
+    //         else if (e.Result.Reason == ResultReason.NoMatch)
+    //         {
+    //             Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+    //         }
+    //     };
+
+    //     recognizer.Canceled += (s, e) =>
+    //     {
+    //         Console.WriteLine($"CANCELED: Reason={e.Reason}");
+
+    //         if (e.Reason == CancellationReason.Error)
+    //         {
+    //             Console.WriteLine($"CANCELED: ErrorCode={e.ErrorCode}");
+    //             Console.WriteLine($"CANCELED: ErrorDetails={e.ErrorDetails}");
+    //             Console.WriteLine($"CANCELED: Did you update the speech key and location/region info?");
+    //         }
+
+    //         stopRecognition.TrySetResult(0);
+    //     };
+
+    //     recognizer.SessionStopped += (s, e) =>
+    //     {
+    //         Console.WriteLine("\n    Session stopped event.");
+    //         stopRecognition.TrySetResult(0);
+    //     };
+
+    //     await recognizer.StartContinuousRecognitionAsync();
+    //     Task.WaitAny(new[] { stopRecognition.Task });
+    //     Thread.Sleep(5000);
+    //     await recognizer.StopContinuousRecognitionAsync();
+    // }
+//}
+
+

@@ -57,7 +57,9 @@ const Emotion = () => {
       };
       return feeling;
     });
+    
     console.log("person in get " + person.textEmotion);
+    console.log("person sentiment" + person.textSentiment);
     setUser(person);
     setEmotions(feelings);
   };

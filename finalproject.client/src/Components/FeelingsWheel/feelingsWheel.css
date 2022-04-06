@@ -1,8 +1,17 @@
 .feelingsWheel {
     animation-duration: 15s;
-    animation-name: rotation;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    animation-name: rotation;
+    animation-play-state: paused;
+}
+
+.arrow {
+    display: flex;
+    font-size: 3rem;
+    margin-left: 0.2em;
+    justify-content: center;
+    align-self: center;
 }
 
 @keyframes rotation {

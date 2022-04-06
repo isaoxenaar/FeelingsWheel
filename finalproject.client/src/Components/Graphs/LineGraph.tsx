@@ -4,7 +4,8 @@ import EmotionType from '../../Types/Emotion';
 
 
 const LineGraph = ({data}: {data:EmotionType[]}) => {
-    const [selectedLine, setSelectedLine] = useState<string[]>([]);
+    const [selectedLine, setSelectedLine] = useState<string>();
+    const [hiddenLines, setHiddenLines] = useState<string[]>([]);
     
   
   const chartData:EmotionType[] = data.map(t => {
@@ -21,10 +22,8 @@ const LineGraph = ({data}: {data:EmotionType[]}) => {
     })
 
     const selectLine = (event:any) => {
-      let selectArr = selectedLine.map((s) => s);
-      let lineIndex = selectArr.indexOf(event.id);
-      event.dataKey != 'null' ? selectArr.push(event.id) : selectArr.splice(lineIndex, 1);
-      setSelectedLine(selectArr);
+      event.style.visibility = event.style.visibility === 'hidden' ? 'visible' : 'hidden';
+      
 
     }
     
@@ -37,7 +36,7 @@ const LineGraph = ({data}: {data:EmotionType[]}) => {
         <YAxis />
         <Tooltip />
         <Legend onClick={selectLine}/>
-        <Line type={'monotone'} dataKey={selectedLine.includes('anger') ? 'null' : 'anger'} stroke='#FF0000' id='anger' />
+        <Line type={'monotone'} dataKey='anger' stroke='#FF0000' id='anger' />
         <Line type={'monotone'} dataKey='contempt' stroke='#00FFFF' id='contempt'/>
         <Line type={'monotone'} dataKey='disgust' stroke='#808000' id='disgust'/>
         <Line type={'monotone'} dataKey='fear' stroke='#000000' id='fear'/>

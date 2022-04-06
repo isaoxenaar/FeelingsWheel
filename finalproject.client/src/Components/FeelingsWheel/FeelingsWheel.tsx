@@ -1,6 +1,6 @@
 import './feelingsWheel.css';
 import React, {useEffect, useState} from "react";
-import { setTokenSourceMapRange } from 'typescript';
+import * as data from '../../Data/FeelingArray.json';
 
 const FeelingsWheel = () => {
     const [degree, setDegree] = useState<number>(0);
@@ -13,19 +13,14 @@ const FeelingsWheel = () => {
         const wheel = document.getElementById('feelingsWheel');
         wheel?.setAttribute("style", "animation-play-state: running");
         setTimeout(() => {
-            console.log("setTimeout in starter was called: ", amount);
             wheel?.setAttribute("style", "animation-play-state: paused");
-            
-        }, amount * 1000);  
+        }, amount * 1000); 
         setDegree(prev => prev += amount);
-        console.log(degree + amount + " this is degree newest?");
-        
     }
 
     useEffect(() => {
-        const feelingNr = degree / 0.212;
-        setFeeling(feelingNr)
-        console.log(feelingNr + " this is feeling nr?");
+        const feelingNr = Math.round(degree / 0.21) > 68 ? Math.round(degree / 0.21) % 68 : Math.round(degree / 0.21);
+        setFeeling(feelingNr);       
     } ,[degree, feeling])
 
     // const stopper = () => {
@@ -42,9 +37,10 @@ const FeelingsWheel = () => {
         <>
         <section>
             <h1>Spin the Wheel</h1>
+            <h4>{data.feeling[feeling-1]} hello</h4>
             <div className='arrow'>&darr;</div>
             <img src={'https://i.postimg.cc/3xRTHN29/feelings-Wheelpng.png'} className='feelingsWheel' id='feelingsWheel' onClick={starter} alt='Feelings Wheel'/>
-        </section>
+            </section>
         </>
     )
 }

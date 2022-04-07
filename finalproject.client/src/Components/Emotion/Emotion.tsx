@@ -90,9 +90,6 @@ const Emotion = () => {
       };
       return feeling;
     });
-    
-    console.log("person in get " + person.textEmotion);
-    console.log("person sentiment" + person.textSentiment);
     setUser(person);
     setEmotions(feelings);
   };
@@ -106,14 +103,11 @@ const Emotion = () => {
           get emotions
         </button>
       </div>
-      
       <div className='selector--container'>
         <Select options={options as any} value={selectedOption} onChange={e => setSelectedOption(e!)} />
       </div>
-
       <Graphs feeling={modEmotions[modEmotions.length - 1]} type={selectedOption.value} />
       <LineGraph data={modEmotions} type={selectedOption.value}/>
-      {/* <CustomChart feeling={emotions}/> */}
     </div>
   );
 };

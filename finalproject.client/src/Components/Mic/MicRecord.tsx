@@ -8,7 +8,7 @@ const MicRecord = () => {
 
     const [response, setResponse] = useState<Response>();
     const [sound, setSound] = useState<string>();
-    const [analyzed, setAnalyzed] = useState<string>();
+    const [analyzed, setAnalyzed] = useState<string>("");
     const [emoColor, setEmoColor] = useState<string>("white");
     const [userData, setUserData] = useState<any>();
     const { user } = useAuth0();
@@ -36,7 +36,7 @@ const MicRecord = () => {
     
     const txtAnalyzer = () => {
         const str = response ? response.toString() : "we did not hear you, tell us again."
-        let advice = "not sure what you are feeling";
+        let advice = "";
 
         const coreFeeling = data.default.core.find((cr:any) => { 
             const hasKey = cr.keywords.map((word:any) => {
@@ -46,14 +46,14 @@ const MicRecord = () => {
                 return cr
             }
         })
+
         if(coreFeeling) {
             advice = `you prob feel ${coreFeeling.name}, remember ${coreFeeling.content}`
             setEmoColor(coreFeeling.color);
-            console.log("corefeeling" + coreFeeling.name);
         }
-        const el = document.getElementById("app--body");
-        el?.setAttribute("style", `background-color: ${emoColor}`);
-        setAnalyzed(advice);
+            const el = document.getElementById("app--body");
+            el?.setAttribute("style", `background-color: ${emoColor}`);
+            setAnalyzed(advice);
         }    
 
     const startRecording = async () => {
@@ -63,7 +63,7 @@ const MicRecord = () => {
             headers: {
             },
         }).then(res => res.json()).then(data => responsedata = data).catch(console.error);
-        console.log(responsedata);
+
         setResponse(response)
         stopRecording();
         recorder.start()
@@ -75,7 +75,6 @@ const MicRecord = () => {
         recorder.stop()
         .then(({blob, buffer}) => {
             blobblob = blob;
-            console.log("this is blob" + blob.size)
             const file = new File(buffer, 'me-at-thevoice.mp3', {
                 type: blob.type,
                 lastModified: Date.now()
@@ -88,19 +87,24 @@ const MicRecord = () => {
                     'Content-Type': 'application/json'
                 }
             }).then(res => res.json()).then(data => setUserData(JSON.parse(data.textSentiment)));
+
+            const notZeroPositive:boolean = userData && userData.positivity !== '0';
+            const notZeroNegative:boolean = userData && userData.negativity !== '0';        
     }
 
     return (
         <>
             <section id="mic--Main">
-                <h3 className="mic--Title">How do you feel?</h3>
-                <h3 className="mic--Response">You said: {response} </h3>
-                <h3 className="mic--Advice">Advice: {analyzed}</h3>
+                <h2 className="mic--Title">How do you feel?</h2>
+                <h3 className="mic--Response">{response} </h3>
+                <h3 className="mic--Advice">{analyzed} </h3>
+                <p className="mic--Emotions--Title">Your intonation reveals: </p>
                 <div className="mic--Emotions">
-                    <p className="mic--positivity">{userData && userData.positivity+'%'} positivity</p>
-                    <p className="mic--negativity">{userData && userData.negativity+'%'} negativity</p>
+                    <p className="mic--positivity" id="positivity" style={{width:`${userData && userData.positivity}px`}}>{userData && userData.positivity+'% '}</p>
+                    <p className="mic--negativity" id="negativity" style={{width:`${userData && userData.negativity}px`}}>{userData && userData.negativity+'% '}</p>
+                    <p id='positivity--text'>Positivity</p>
+                    <p id='negativity--text'>Negativity</p>
                 </div>
-                <h1> </h1>
                 <section className="mic-Buttons">
                     <button className="mic--startBtn" onClick={() => startRecording()}>Start</button>
                     <button className="mic--stopBtn" onClick={() => stopRecording()}>Stop</button>

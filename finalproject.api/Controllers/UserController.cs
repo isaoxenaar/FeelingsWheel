@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using finalproject.api.Services;
-using finalproject.api.Models;
-using Microsoft.Azure.CognitiveServices.Vision.Face;
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 
 namespace finalproject.api.Controllers;
 

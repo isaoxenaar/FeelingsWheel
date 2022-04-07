@@ -10,7 +10,7 @@ const DeleteButton = ({id}: any) => {
     }
   return (
     <button 
-    className={'delete__button'}
+    className={'delete--button'}
     onClick={() => removeData(id)}
     >
         Delete Data

@@ -1,9 +1,9 @@
-.logout__button, .delete__button {
+.logout--button, .delete--button {
   margin: 1rem;
   align-self: flex-end;
   min-width: fit-content;
 }
-.logout__button, .delete__button {
+.logout--button, .delete--button {
   margin: 2em 2em;
   align-items: center;
   border-style: solid;
@@ -15,7 +15,7 @@
   font-style: bold;
   font-family: "Palette Mosaic", cursive;
 }
-.logout__button:hover, .delete__button:hover {
+.logout--button:hover, .delete--button:hover {
   background-color: black;
   color: white;
 }

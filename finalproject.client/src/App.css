@@ -9,12 +9,6 @@
   flex-flow: column;
   align-items: center;
 }
-
-/* .app--LoginBtn {
-  max-width: 100vw;
-  max-height: 100vh;
-} */
-
 #app--Login {
   display: flex;
   justify-content: center;

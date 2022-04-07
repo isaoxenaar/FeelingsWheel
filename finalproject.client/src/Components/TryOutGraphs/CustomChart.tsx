@@ -36,11 +36,9 @@ const CustomChart: FC<IProps> = ({feeling}:IProps) => {
             {name: "sadness", value: feeling[0].sadness * 100},
             {name: "surprise", value: feeling[0].surprise * 100} 
         ]
-        //const color = d3.scaleOrdinal().domain(data.map((d:any) => d.value)).range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#abba91", "#322102", "#124ef9"])
-        //const color = d3.scaleOrdinal().domain(data2).range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#abba91", "#322102", "#124ef9"])
+        
         const colors = ["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#abba91", "#322102", "#124ef9"];
         const pie = d3.pie().value(((d:any) => d.value)(data))
-        // const data_ready = pie(data);
         let myArc: Arc<any, any> = arc().innerRadius(0).outerRadius(radius);
         let color = d3.scaleOrdinal().range(d3.schemeSet2);
         let arcs = svg.selectAll('whatever').data([1, 2, 3, 4, 5]);

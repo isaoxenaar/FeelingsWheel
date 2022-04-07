@@ -9,14 +9,11 @@ const LineGraph = ({data, type}: {data:EmotionType[], type:ChartType}) => {
 
     const selectLine = (event:any) => {
       event.style.visibility = event.style.visibility === 'hidden' ? 'visible' : 'hidden';
-      
-
     }
     if(type === 'lineChart')
     {
     return (
     <>
-
         <LineChart width={750} height={500} data={data}>
         <CartesianGrid strokeDasharray={'3 3'} />
         <XAxis dataKey={'timeFormatted'} />
@@ -32,11 +29,9 @@ const LineGraph = ({data, type}: {data:EmotionType[], type:ChartType}) => {
         <Line type={'monotone'} dataKey='sadness' stroke="#a3acdd" id='sadness'/>
         <Line type={'monotone'} dataKey='surprise' stroke="#a8e0d9" id='surprise'/>
     </LineChart>
-
     </>
   )}
   return null;
-
 }
 
 export default LineGraph

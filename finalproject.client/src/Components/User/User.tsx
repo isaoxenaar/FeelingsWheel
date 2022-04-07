@@ -5,14 +5,16 @@ import LogoutButton from '../LogoutButton';
 import './User.css';
 
 const User = () => {
-    const {user, isAuthenticated} = useAuth0();
+
+  const {user, isAuthenticated} = useAuth0();
+
   return (
     <>
       {isAuthenticated && (
-        <section className='profile'>
+        <section className='user--profile'>
           <section > 
-            <p className='username'>{user?.name}</p>
-            <p className='email'>{user?.email}</p>
+            <p className='user--username'>{user?.name}</p>
+            <p className='user--email'>{user?.email}</p>
           </section>
           <LogoutButton />
           <DeleteButton id={user?.sub}/>

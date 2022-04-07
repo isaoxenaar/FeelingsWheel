@@ -14,7 +14,6 @@ const User = () => {
         <section className='user--profile'>
           <section > 
             <p className='user--username'>{user?.name}</p>
-            <p className='user--email'>{user?.email}</p>
           </section>
           <LogoutButton />
           <DeleteButton id={user?.sub}/>

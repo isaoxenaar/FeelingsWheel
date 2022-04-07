@@ -1,27 +1,37 @@
 #mic--Main {
-    display: flex;
     font-family: 'Spectral', serif;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    max-width: 27%;
 }
 .mic--Title {
     font-style: bold;
+    font-size: 2vw;
+    padding: 0.3em;
 }
 .mic--Response {
     font-family: 'Spectral', serif;
     color: rgb(136, 136, 136);
     font-style: bold;
+    padding: 0.3em;
 }
 .mic--Advice {
     font-family: 'Spectral', serif;
     font-style: oblique;
+    padding: 0.3em;
 }
 .mic--Buttons {
     display: flex;
     flex-flow: row;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
 }
 .mic--startBtn, .mic--stopBtn {
-    align-self: flex-end;
+    align-self: center;
     min-width: fit-content;
+    justify-content: center;
 }
 .mic--startBtn, .mic--stopBtn {
     margin: 1em 1em;
@@ -43,23 +53,27 @@
     display: grid;
     grid-template-columns: 2;
     grid-template-rows: 2;
-    row-gap: 1em;
     justify-content: center;
     text-align: center;
     box-sizing: border-box;
-    padding: 0.0em;
     font-family: 'Spectral', serif;
 }
 .mic--Emotions--Title {
+    justify-content: center;
     align-items: center;
+    margin-left: 6em;
+    margin-bottom: 0;
+    font-style: italic;
+    font-size: 1em;
 }
 .mic--positivity, .mic--negativity {
     align-items: center;
     border: 2px solid black;
     border-radius: 0em;
     padding: 1em;
-    font-size: 1em;
-    font-style: bold;
+    font-size: 0.8em;
+    text-align: center;
+
 }
 .mic--negativity {
     color: white;
@@ -73,14 +87,16 @@
 }
 #negativity--text {
     grid-row: 2;
+    font-weight: bold;
     grid-column:2;
-    align-self: center;
-    margin: 0.5em;
-
+    margin-left: 0;
 }
 #positivity--text {
     align-self: center;
-    margin: 0.5em;
-
+    font-weight: bold;
+    padding-right: 0.5em;
 }
-  
+
+.emo--container {
+    margin: 0 auto;
+}

@@ -15,10 +15,11 @@
 }
 .app--Footer {
   display: flex;
+  bottom: 0;
   justify-content: center;
   font-family: 'Spectral', serif;
-  padding-top: 2.5em;
-  font-size: 1.8vw;
+  padding-top: 10em;
+  font-size: 1.5vw;
 }
 .app--Nav {
   font-family: 'Spectral', serif;

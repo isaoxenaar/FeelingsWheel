@@ -46,15 +46,17 @@ const MicRecord = () => {
                 return cr
             }
         })
-
         if(coreFeeling) {
             advice = `you prob feel ${coreFeeling.name}, remember ${coreFeeling.content}`
             setEmoColor(coreFeeling.color);
         }
-            const el = document.getElementById("app--body");
-            el?.setAttribute("style", `background-color: ${emoColor}`);
-            setAnalyzed(advice);
-        }    
+        if(!coreFeeling) {
+            setEmoColor("white");
+        }
+        const el = document.getElementById("app--body");
+        el?.setAttribute("style", `background-color: ${emoColor}`);
+        setAnalyzed(advice);
+    }    
 
     const startRecording = async () => {
         let responsedata = '';
@@ -98,12 +100,14 @@ const MicRecord = () => {
                 <h2 className="mic--Title">How do you feel?</h2>
                 <h3 className="mic--Response">{response} </h3>
                 <h3 className="mic--Advice">{analyzed} </h3>
-                <p className="mic--Emotions--Title">Your intonation reveals: </p>
-                <div className="mic--Emotions">
-                    <p className="mic--positivity" id="positivity" style={{width:`${userData && userData.positivity}px`}}>{userData && userData.positivity+'% '}</p>
-                    <p className="mic--negativity" id="negativity" style={{width:`${userData && userData.negativity}px`}}>{userData && userData.negativity+'% '}</p>
-                    <p id='positivity--text'>Positivity</p>
-                    <p id='negativity--text'>Negativity</p>
+                <p className="mic--Emotions--Title">your intonation is</p>
+                <div className='emo--container'>
+                    <div className="mic--Emotions">
+                        <p className="mic--positivity" id="positivity" style={{width:`${userData && userData.positivity}px`}}>{userData && parseInt(userData.positivity)+'% '}</p>
+                        <p className="mic--negativity" id="negativity" style={{width:`${userData && userData.negativity}px`}}>{userData && parseInt(userData.negativity)+'% '}</p>
+                        <p id='positivity--text'>positive</p>
+                        <p id='negativity--text'>negative</p>
+                    </div>
                 </div>
                 <section className="mic-Buttons">
                     <button className="mic--startBtn" onClick={() => startRecording()}>Start</button>

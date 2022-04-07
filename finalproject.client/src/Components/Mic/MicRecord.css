@@ -34,4 +34,25 @@
     background-color: black;
     color: white;
 }
+
+.mic--Emotions {
+    display: flex;
+    flex-flow: row;
+    row-gap: 1em;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: 0.5em;
+}
+
+.mic--positivity {
+    border: 1px solid black;
+
+}
+
+.mic--negativity {
+    border: 1px solid black;
+ 
+
+
+}
   

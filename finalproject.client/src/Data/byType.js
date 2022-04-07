@@ -1,82 +1,57 @@
 
-{
-    "feelings": {"core": [
-      {
-        "type":"core",
-        "name": "love",
-        "color": "",
-        "content": "",
-        "subtype": [{
-          "type": "subtype",
-          "core": "love",
-          "name": "peacefull",
-          "color": "",
-          "content":"",
-          "sub2": [{
-              "core": "love", 
-              "subtype": "peacefull",
-              "name": "satisfied", 
-              "color": "", 
-              "content":""
-            },
-            {}]
-        }, {}]
-      }, {}]}
-      
-      , 
-
+const byType = {
       "core": [{
         "type":"core",
         "name": "fear",
         "number": 1, 
-        "color": "",
-        "content": "",
-        "keywords": [],
+        "color": "#f19a84",
+        "content": "called mom",
+        "keywords": ["ghost", "snake", "darkness"],
         "subtype":[]
       },
       {
         "type":"core",
         "name": "anger",
         "number": 2, 
-        "color": "",
-        "content": "",
-        "keywords": [],
+        "color": "#e56bb5",
+        "content": "went running",
+        "keywords": ["queues", "rudeness", "taxes"],
         "subtype":[]
       },
       {
         "type":"core",
         "name": "sadness",
         "number": 3,
-        "color": "",
-        "content": "",
-        "keywords": [],
+        "color": "#a3acdd",
+        "content": "cried and watched a movie",
+        "keywords": ["break-up", "injustice", "rain"],
         "subtype":[]
       },
       {
         "type":"core",
         "name": "surprise",
         "number": 4,
-        "color": "",
-        "content": "",
-        "keywords": [],
+        "color": "#addf97",
+        "content": "you were much happier",
+        "keywords": ["letter", "present", "blue tree"],
         "subtype":[]
       },
       {
         "type":"core",
         "name": "joy",
         "number": 5,
-        "color": "",
-        "content": "",
-        "keywords": [],
+        "color": "#aadc85",
+        "content": "to soak it up, you will have energy to do hard stuff afterwards",
+        "keywords": ["icecream", "sunshine", "helping"],
         "subtype":[]
       },
       {
         "type":"core",
         "name": "love",
         "number": 6,
-        "color": "",
-        "content": "",
-        "keywords": [],
+        "color": "#e8ec6d",
+        "content": "lifts you up where you belong",
+        "keywords": ["babies", "kittens", "nauseous"],
         "subtype":[]
       }
       ],
@@ -93,11 +68,11 @@
       {
         "type": "subtype",
         "core": "love",
-        "name": "peacefull",
-        "number": 7,
-        "color": "#f7bf95",
+        "name": "tender",
+        "number": 8,
+        "color": "#f9d58c",
         "content":"",
-        "keywords":["relaxed", "breeze", "safe"],
+        "keywords":["soft", "marsepin", "safe"],
         "sub2": ["satisfied", "Tranquil"]
       }
       ], 
@@ -118,3 +93,5 @@
         }
       ]
 }
+
+export default byType;

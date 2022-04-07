@@ -1,0 +1,24 @@
+{
+    "feelings": {"core": [
+    {
+      "type":"core",
+      "name": "love",
+      "color": "#e8ec6d",
+      "content": "",
+      "subtype": [{
+        "type": "subtype",
+        "core": "love",
+        "name": "peacefull",
+        "color": "",
+        "content":"",
+        "sub2": [{
+            "core": "love", 
+            "subtype": "peacefull",
+            "name": "satisfied", 
+            "color": "", 
+            "content":""
+          },
+          {}]
+      }, {}]
+    }, {}]}
+}

@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <> 
         <section className='home--Main'>
-            <h3>home</h3>
             <FeelingsWheel/>
         </section>
     </>

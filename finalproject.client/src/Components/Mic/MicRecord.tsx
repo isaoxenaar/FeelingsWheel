@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './MicRecord.css'
+import * as data from '../../Data/byType';
 import { useAuth0 } from '@auth0/auth0-react';
 import Recorder from "recorder-js";
 
@@ -9,6 +10,7 @@ const MicRecord = () => {
     const [sound, setSound] = useState<string>();
     const [analyzed, setAnalyzed] = useState<string>();
     const [emoColor, setEmoColor] = useState<string>("white");
+    const [userData, setUserData] = useState<any>();
     const { user } = useAuth0();
 
     (window as any).AudioContext = (window as any).AudioContext || (window as any).webkitAudioContext;
@@ -35,20 +37,24 @@ const MicRecord = () => {
     const txtAnalyzer = () => {
         const str = response ? response.toString() : "we did not hear you, tell us again."
         let advice = "not sure what you are feeling";
-        if(str.includes("fell") || str.includes("cut"))
-            advice = "get a bandaid";
-        if(str.includes("angry")){
-            advice = "last time you were angry you went running and it helped.";
-            setEmoColor("#e56bb5");
-        }
-        if(str.includes("nervous")) {
-            advice = "you might feel anxious lay on the floor and breath ten times";
-            setEmoColor("grey")
+
+        const coreFeeling = data.default.core.find((cr:any) => { 
+            const hasKey = cr.keywords.map((word:any) => {
+                return str.includes(word) ? "yes" : "no";       
+            })
+            if(hasKey.includes("yes")){
+                return cr
+            }
+        })
+        if(coreFeeling) {
+            advice = `you prob feel ${coreFeeling.name}, remember ${coreFeeling.content}`
+            setEmoColor(coreFeeling.color);
+            console.log("corefeeling" + coreFeeling.name);
         }
         const el = document.getElementById("app--body");
         el?.setAttribute("style", `background-color: ${emoColor}`);
         setAnalyzed(advice);
-    }
+        }    
 
     const startRecording = async () => {
         let responsedata = '';
@@ -64,7 +70,7 @@ const MicRecord = () => {
             .then(() => isRecording = true);
         }
     
-    const stopRecording = () => {
+    const stopRecording = async() => {
         isRecording = false;
         recorder.stop()
         .then(({blob, buffer}) => {
@@ -76,13 +82,24 @@ const MicRecord = () => {
               });
               setSound(file.name);
             }).then(() => downloader());
+            await fetch(`https://localhost:7189/api/User/${user?.sub}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json()).then(data => setUserData(JSON.parse(data.textSentiment)));
     }
 
     return (
         <>
             <section id="mic--Main">
                 <h3 className="mic--Title">How do you feel?</h3>
-                <h3 className="mic--Advice">you said: {response} advice: {analyzed}</h3>
+                <h3 className="mic--Response">You said: {response} </h3>
+                <h3 className="mic--Advice">Advice: {analyzed}</h3>
+                <div className="mic--Emotions">
+                    <p className="mic--positivity">{userData && userData.positivity+'%'} positivity</p>
+                    <p className="mic--negativity">{userData && userData.negativity+'%'} negativity</p>
+                </div>
                 <h1> </h1>
                 <section className="mic-Buttons">
                     <button className="mic--startBtn" onClick={() => startRecording()}>Start</button>

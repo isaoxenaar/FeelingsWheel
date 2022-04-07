@@ -2,8 +2,16 @@
   display: flex;
   flex-flow: column;
 }
+
+.btn--container {
+  display: flex;
+  justify-content: center;
+  min-width: 40rem;
+}
+
 #emotions--Btn {
   margin: 2em 2em;
+  min-width: 35rem;
   align-items: center;
   border-style: solid;
   border-color: black;
@@ -14,7 +22,33 @@
   font-style: bold;
   font-family: "Palette Mosaic", cursive;
 }
+
 #emotions--Btn:hover {
   background-color: black;
   color: white;
 } 
+
+.selector--container {
+  align-self: center;
+  min-width: 50rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 40rem) {
+  .emotions {
+    display: flex;
+    justify-content: center;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+
+  .btn--container {
+    justify-content: center;
+    min-width: 15rem;
+  }
+
+  .selector--container {
+    justify-content: center;
+    min-width: 18rem;
+  }
+}

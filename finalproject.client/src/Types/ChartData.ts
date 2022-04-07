@@ -4,5 +4,5 @@ export type ChartData = {
     fill: string;
   }[];
   
-  export type ChartType = 'pieChart' | 'radialBarChart' | 'radarChart';
+  export type ChartType = 'pieChart' | 'radialBarChart' | 'radarChart' | 'lineChart';
   

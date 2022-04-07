@@ -2,49 +2,52 @@ import { useMemo } from 'react';
 import { PieChart, Pie, Tooltip, RadialBarChart, RadarChart, Legend, RadialBar, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar } from 'recharts';
 import { ChartData, ChartType } from '../../Types/ChartData';
 import EmotionType from '../../Types/Emotion';
+import './graphs.css';
 
 export const Graphs = ({ feeling, type }: { feeling: EmotionType; type: ChartType }) => {
+ 
+  
   const chartData = useMemo<ChartData>(
     () => [
       {
         name: 'anger',
-        value: feeling.anger * 100,
-        fill: '#FF0000',
+        value: feeling.anger,
+        fill: "#e56bb5",
       },
       {
         name: 'contempt',
-        value: feeling.contempt * 100,
-        fill: '#00FFFF',
+        value: feeling.contempt,
+        fill: "#af79bc",
       },
       {
         name: 'disgust',
-        value: feeling.disgust * 100,
-        fill: '#808000',
+        value: feeling.disgust,
+        fill: "#b688c1",
       },
       {
         name: 'fear',
-        value: feeling.fear * 100,
-        fill: '#000000',
+        value: feeling.fear,
+        fill: "#f19a84",
       },
       {
         name: 'happiness',
-        value: feeling.happiness * 100,
-        fill: '#00FF00',
+        value: feeling.happiness,
+        fill: "#addf97",
       },
       {
         name: 'neutral',
-        value: feeling.neutral * 100,
+        value: feeling.neutral,
         fill: '#66564A',
       },
       {
         name: 'sadness',
-        value: feeling.sadness * 100,
-        fill: '#0000FF',
+        value: feeling.sadness,
+        fill: "#a3acdd",
       },
       {
         name: 'surprise',
-        value: feeling.surprise * 100,
-        fill: '#800080',
+        value: feeling.surprise,
+        fill: "#a8e0d9",
       },
     ],
     [feeling]
@@ -81,7 +84,6 @@ const RadarGraph = ({ data }: { data: ChartData }) => {
         <PolarAngleAxis dataKey={'name'} />
         <PolarRadiusAxis angle={30} domain={[0, 150]} />
         <Radar name={'Emotions'} dataKey={'value'} stroke={'seagreen'} fill={'tomato'} fillOpacity={65} />
-        <Legend />
       </RadarChart>
       <div className='radar__legend'>
         <ul style={{ listStyleType: 'none' }}>

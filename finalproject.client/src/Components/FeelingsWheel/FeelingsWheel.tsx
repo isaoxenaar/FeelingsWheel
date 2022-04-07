@@ -32,7 +32,7 @@ const FeelingsWheel = () => {
             <h4>{data.feeling[feeling-1]} hello</h4>
             <div className='arrow'>&darr;</div>
             <img src={'https://i.postimg.cc/3xRTHN29/feelings-Wheelpng.png'} className='feelingsWheel' id='feelingsWheel' onClick={starter} alt='Feelings Wheel'/>
-            </section>
+        </section>
         </>
     )
 }

@@ -32,6 +32,46 @@
         "content": "",
         "keywords": [],
         "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "joy",
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "anger",
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "love",
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "love",
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "love",
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
       }
       ],
       "subtypes": [{

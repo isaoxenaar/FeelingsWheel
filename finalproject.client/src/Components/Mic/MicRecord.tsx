@@ -42,7 +42,7 @@ const MicRecord = () => {
             setEmoColor("#e56bb5");
         }
         if(str.includes("nervous")) {
-            advice = "you might feel lay on the floor and breath ten times";
+            advice = "you might feel anxious lay on the floor and breath ten times";
             setEmoColor("grey")
         }
         const el = document.getElementById("app--body");

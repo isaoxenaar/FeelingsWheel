@@ -27,15 +27,8 @@
 
       "core": [{
         "type":"core",
-        "name": "love",
-        "color": "",
-        "content": "",
-        "keywords": [],
-        "subtype":[]
-      },
-      {
-        "type":"core",
-        "name": "joy",
+        "name": "fear",
+        "number": 1, 
         "color": "",
         "content": "",
         "keywords": [],
@@ -44,6 +37,34 @@
       {
         "type":"core",
         "name": "anger",
+        "number": 2, 
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "sadness",
+        "number": 3,
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "surprise",
+        "number": 4,
+        "color": "",
+        "content": "",
+        "keywords": [],
+        "subtype":[]
+      },
+      {
+        "type":"core",
+        "name": "joy",
+        "number": 5,
         "color": "",
         "content": "",
         "keywords": [],
@@ -52,22 +73,7 @@
       {
         "type":"core",
         "name": "love",
-        "color": "",
-        "content": "",
-        "keywords": [],
-        "subtype":[]
-      },
-      {
-        "type":"core",
-        "name": "love",
-        "color": "",
-        "content": "",
-        "keywords": [],
-        "subtype":[]
-      },
-      {
-        "type":"core",
-        "name": "love",
+        "number": 6,
         "color": "",
         "content": "",
         "keywords": [],
@@ -76,14 +82,24 @@
       ],
       "subtypes": [{
         "type": "subtype",
-          "core": "love",
-          "name": "peacefull",
-          "color": "#f7bf95",
-          "content":"",
-          "keywords":["relaxed", "breeze", "safe"],
-          "sub2": ["satisfied", "Tranquil"]
+        "core": "love",
+        "name": "peacefull",
+        "number": 7,
+        "color": "#f7bf95",
+        "content":"",
+        "keywords":["relaxed", "breeze", "safe"],
+        "sub2": ["satisfied", "Tranquil"]
+      },
+      {
+        "type": "subtype",
+        "core": "love",
+        "name": "peacefull",
+        "number": 7,
+        "color": "#f7bf95",
+        "content":"",
+        "keywords":["relaxed", "breeze", "safe"],
+        "sub2": ["satisfied", "Tranquil"]
       }
-        
       ], 
       "sub-subtypes":[{
         "core": "love", 

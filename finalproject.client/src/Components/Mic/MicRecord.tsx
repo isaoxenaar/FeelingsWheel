@@ -109,7 +109,7 @@ const MicRecord = () => {
                         <p id='negativity--text'>negative</p>
                     </div>
                 </div>
-                <section className="mic-Buttons">
+                <section className="mic--Buttons">
                     <button className="mic--startBtn" onClick={() => startRecording()}>Start</button>
                     <button className="mic--stopBtn" onClick={() => stopRecording()}>Stop</button>
                 </section>

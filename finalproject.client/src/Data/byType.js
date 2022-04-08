@@ -5,7 +5,7 @@ const byType = {
         "name": "fear",
         "number": 1, 
         "color": "#f19a84",
-        "content": "called mom",
+        "content": "to call mom immedeatly",
         "keywords": ["ghost", "snake", "darkness"],
         "subtype":[]
       },
@@ -14,7 +14,7 @@ const byType = {
         "name": "anger",
         "number": 2, 
         "color": "#e56bb5",
-        "content": "went running",
+        "content": "that when you went running, the dust settled",
         "keywords": ["queues", "rudeness", "taxes"],
         "subtype":[]
       },
@@ -23,7 +23,7 @@ const byType = {
         "name": "sadness",
         "number": 3,
         "color": "#a3acdd",
-        "content": "cried and watched a movie",
+        "content": "when you cried and watched a movie, it was still just as bad.",
         "keywords": ["break-up", "injustice", "rain"],
         "subtype":[]
       },
@@ -32,7 +32,7 @@ const byType = {
         "name": "surprise",
         "number": 4,
         "color": "#addf97",
-        "content": "you were much happier",
+        "content": "that this woke you up, be open to your surroundings",
         "keywords": ["letter", "present", "blue tree"],
         "subtype":[]
       },
@@ -50,7 +50,7 @@ const byType = {
         "name": "love",
         "number": 6,
         "color": "#e8ec6d",
-        "content": "lifts you up where you belong",
+        "content": "that love lifts you up where you belong",
         "keywords": ["babies", "kittens", "nauseous"],
         "subtype":[]
       }

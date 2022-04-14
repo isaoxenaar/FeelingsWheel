@@ -2,7 +2,6 @@ import Webcam from 'react-webcam';
 import React, {useRef, useCallback, useState, useEffect} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './Webcam.css';
-import { AspectRatio } from '@cloudinary/url-gen/qualifiers';
 
 const Capture = () => {
     const videoConstraints = {
@@ -31,8 +30,8 @@ const Capture = () => {
         }, [WebcamRef, setPhoto]);
 
     useEffect(() =>{
-        postPhoto()
-    },[photo])
+        postPhoto();
+    },[photo, postPhoto])
 
     return (
         <section className='webcam'>

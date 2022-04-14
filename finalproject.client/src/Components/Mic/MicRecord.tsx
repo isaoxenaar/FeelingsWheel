@@ -19,8 +19,8 @@ const MicRecord = () => {
             onAnalysed: data => data,
     });
 
-    let isRecording:boolean = false;
-    let blobblob: Blob = new Blob();
+    //let isRecording:boolean = false;
+    //let blobblob: Blob = new Blob();
 
     navigator.mediaDevices.getUserMedia({audio: true})
         .then(stream => recorder.init(stream))
@@ -51,7 +51,7 @@ const MicRecord = () => {
         }    
     useEffect(() => {
         txtAnalyzer();
-    } ,[response, analyzed, emoColor])
+    } ,[response, analyzed, emoColor, txtAnalyzer])
 
     const downloader = () => {
         //Recorder.download((blobblob), 'testfile');
@@ -68,19 +68,18 @@ const MicRecord = () => {
 
         setResponse(response)
         stopRecording();
-        recorder.start()
-            .then(() => isRecording = true);
+        recorder.start();
+         //isRecording = true
         }
     
     const stopRecording = async() => {
-        isRecording = false;
+        //isRecording = false;
         recorder.stop()
         .then(({blob, buffer}) => {
-            blobblob = blob;
-            const file = new File(buffer, 'me-at-thevoice.mp3', {
-                type: blob.type,
-                lastModified: Date.now()
-              });
+            // const file = new File(buffer, 'me-at-thevoice.mp3', {
+            //     type: blob.type,
+            //     lastModified: Date.now()
+            //   });
               //setSound(file.name);
             }).then(() => downloader());
             await fetch(`https://finalprojectbackend.azurewebsites.net/api/User/${user?.sub}`, {
@@ -89,9 +88,6 @@ const MicRecord = () => {
                     'Content-Type': 'application/json'
                 }
             }).then(res => res.json()).then(data => setUserData(JSON.parse(data.textSentiment)));
-
-            const notZeroPositive:boolean = userData && userData.positivity !== '0';
-            const notZeroNegative:boolean = userData && userData.negativity !== '0';        
     }
 
     return (

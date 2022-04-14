@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Emotion.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import User from '../../Types/User';
 import EmotionType from '../../Types/Emotion';
 import Select from 'react-select';
 import { Graphs } from '../Graphs/Graphs';
@@ -60,22 +59,6 @@ const Emotion = () => {
       setModEmotions(tempArr);
     }
     modEmotions();
-
-    const feelings: EmotionType[] = emotions.map((emo: any) => {
-      const feeling: EmotionType = {
-        anger: emo.Anger,
-        contempt: emo.Contempt,
-        disgust: emo.Disgust,
-        fear: emo.Fear,
-        happiness: emo.Happiness,
-        neutral: emo.Neutral,
-        sadness: emo.Sadness,
-        surprise: emo.Surprise,
-        time: emo.Time,
-        timeFormatted: ''
-      };
-      return feeling;
-    });
     //setUser(person);
   };
 

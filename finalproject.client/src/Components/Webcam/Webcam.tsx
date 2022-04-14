@@ -23,7 +23,7 @@ const Capture = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: `"${photo}"`,
+                body: `"${photob64}"`,
             }).then(res => console.log(res)).catch(console.error);
         }
         postPhoto();

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Azure.CognitiveServices.Vision.Face;
 using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 namespace finalproject.api.Services;
@@ -11,7 +12,7 @@ public class FaceService
     }
     public static async Task<Emotion> DetectFaceExtract(Stream stream)
     {
-        var client = Authenticate("https://faceapiforfinalproject.cognitiveservices.azure.com/", "9987cfbb45954a61887504b7248773d2");
+        var client = Authenticate(Environment.GetEnvironmentVariable("FACEAPI_ENDPOINT"), Environment.GetEnvironmentVariable("FACEAPI_KEY"));
 
         var detectedFace = await client.Face.DetectWithStreamAsync(stream,
                 returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Emotion },

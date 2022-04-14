@@ -1,4 +1,5 @@
 
+using System;
 using finalproject.api.Models;
 using Microsoft.Azure.Cosmos.Table;
 
@@ -39,7 +40,7 @@ public class TableStorageService : ITableStorageService
 
     private async Task<CloudTable> GetCloudTable()
     {
-        var storageAccount = CloudStorageAccount.Parse(_configuration.GetConnectionString("StorageConnectionString"));
+        var storageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("STORAGE_CONNECTION"));
         var tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
         var table = tableClient.GetTableReference(TableName);
         await table.CreateIfNotExistsAsync();

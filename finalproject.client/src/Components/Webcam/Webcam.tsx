@@ -14,24 +14,24 @@ const Capture = () => {
     const [photo, setPhoto] = useState<string>("");
     const { user } = useAuth0();
     
-    const postPhoto = async () => {
-        await fetch(`https://finalprojectbackend.azurewebsites.net/api/Face/${user?.sub}/getResponse`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: `"${photo}"`,
-        }).then(res => console.log(res)).catch(console.error);
-    }
-
+    
     const capture = useCallback(() => {
         let photob64 = WebcamRef.current.getScreenshot();
         setPhoto(() => photob64);
-        }, [WebcamRef, setPhoto]);
-
+    }, [WebcamRef, setPhoto]);
+    
     useEffect(() =>{
+        const postPhoto = async () => {
+            await fetch(`https://finalprojectbackend.azurewebsites.net/api/Face/${user?.sub}/getResponse`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: `"${photo}"`,
+            }).then(res => console.log(res)).catch(console.error);
+        }
         postPhoto();
-    },[photo, postPhoto])
+    },[photo])
 
     return (
         <section className='webcam'>

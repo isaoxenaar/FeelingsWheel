@@ -26,32 +26,30 @@ const MicRecord = () => {
         .then(stream => recorder.init(stream))
         .catch(err => console.log('Uh oh... unable to get stream...', err));
 
-        const txtAnalyzer = () => {
-            const str = response ? response.toString() : "we did not hear you, tell us again."
-            let advice = "";
-    
-            const coreFeeling = data.default.core.find((cr:any) => { 
-                const hasKey = cr.keywords.map((word:any) => {
-                    return str.includes(word) ? "yes" : "no";       
+        useEffect(() => {
+            const txtAnalyzer = () => {
+                const str = response ? response.toString() : "we did not hear you, tell us again."
+                let advice = "";
+        
+                const coreFeeling = data.default.core.find((cr:any) => { 
+                    const hasKey = cr.keywords.map((word:any) => {
+                        return str.includes(word) ? "yes" : "no";       
+                    })
+                    return hasKey.includes("yes")
                 })
-                if(hasKey.includes("yes")){
-                    return cr
+                if(coreFeeling) {
+                    advice = `you prob feel ${coreFeeling.name}, remember ${coreFeeling.content}`
+                    setEmoColor(coreFeeling.color);
                 }
-            })
-            if(coreFeeling) {
-                advice = `you prob feel ${coreFeeling.name}, remember ${coreFeeling.content}`
-                setEmoColor(coreFeeling.color);
-            }
-            if(!coreFeeling) {
-                setEmoColor("white");
-            }
-            const el = document.getElementById("app--body");
-            el?.setAttribute("style", `background-color: ${emoColor}`);
-            setAnalyzed(advice);
-        }    
-    useEffect(() => {
+                if(!coreFeeling) {
+                    setEmoColor("white");
+                }
+                const el = document.getElementById("app--body");
+                el?.setAttribute("style", `background-color: ${emoColor}`);
+                setAnalyzed(advice);
+            }    
         txtAnalyzer();
-    } ,[response, analyzed, emoColor, txtAnalyzer])
+    } ,[response, analyzed, emoColor])
 
     const downloader = () => {
         //Recorder.download((blobblob), 'testfile');
@@ -59,12 +57,12 @@ const MicRecord = () => {
     
 
     const startRecording = async () => {
-        let responsedata = '';
+
         const response = await fetch(`https://finalprojectbackend.azurewebsites.net/api/Speech/${user?.sub}`,{
             method: 'POST',
             headers: {
             },
-        }).then(res => res.json()).then(data => responsedata = data).catch(console.error);
+        }).then(res => res.json()).then(data => data).catch(console.error);
 
         setResponse(response)
         stopRecording();

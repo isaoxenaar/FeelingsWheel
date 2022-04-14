@@ -27,7 +27,7 @@ const Capture = () => {
             }).then(res => console.log(res)).catch(console.error);
         }
         postPhoto();
-    }, [WebcamRef, setPhoto, photo, userId]);
+    }, [WebcamRef, setPhoto, userId]);
     
     useEffect(() =>{
        

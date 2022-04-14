@@ -20,8 +20,8 @@ const Capture = () => {
     }, [WebcamRef, setPhoto]);
     
     useEffect(() =>{
+        const { user } = useAuth0();
         const postPhoto = async () => {
-            const { user } = useAuth0();
             await fetch(`https://finalprojectbackend.azurewebsites.net/api/Face/${user?.sub}/getResponse`, {
                 method: 'POST',
                 headers: {

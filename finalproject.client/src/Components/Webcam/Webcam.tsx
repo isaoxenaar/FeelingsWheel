@@ -12,15 +12,12 @@ const Capture = () => {
 
     const WebcamRef = useRef<any>(null);
     const [photo, setPhoto] = useState<string>("");
+    const { user } = useAuth0();
     
     
     const capture = useCallback(() => {
         let photob64 = WebcamRef.current.getScreenshot();
         setPhoto(() => photob64);
-    }, [WebcamRef, setPhoto]);
-    
-    useEffect(() =>{
-        const { user } = useAuth0();
         const postPhoto = async () => {
             await fetch(`https://finalprojectbackend.azurewebsites.net/api/Face/${user?.sub}/getResponse`, {
                 method: 'POST',
@@ -31,6 +28,10 @@ const Capture = () => {
             }).then(res => console.log(res)).catch(console.error);
         }
         postPhoto();
+    }, [WebcamRef, setPhoto]);
+    
+    useEffect(() =>{
+       
     },[photo])
 
     return (

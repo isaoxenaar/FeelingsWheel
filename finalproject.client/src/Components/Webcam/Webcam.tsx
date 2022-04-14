@@ -12,7 +12,6 @@ const Capture = () => {
 
     const WebcamRef = useRef<any>(null);
     const [photo, setPhoto] = useState<string>("");
-    const { user } = useAuth0();
     
     
     const capture = useCallback(() => {
@@ -22,6 +21,7 @@ const Capture = () => {
     
     useEffect(() =>{
         const postPhoto = async () => {
+            const { user } = useAuth0();
             await fetch(`https://finalprojectbackend.azurewebsites.net/api/Face/${user?.sub}/getResponse`, {
                 method: 'POST',
                 headers: {

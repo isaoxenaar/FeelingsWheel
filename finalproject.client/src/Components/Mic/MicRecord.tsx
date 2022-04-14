@@ -7,7 +7,7 @@ import Recorder from "recorder-js";
 const MicRecord = () => {
 
     const [response, setResponse] = useState<Response>();
-    const [sound, setSound] = useState<string>();
+    //const [sound, setSound] = useState<string>();
     const [analyzed, setAnalyzed] = useState<string>("");
     const [emoColor, setEmoColor] = useState<string>("white");
     const [userData, setUserData] = useState<any>();
@@ -81,7 +81,7 @@ const MicRecord = () => {
                 type: blob.type,
                 lastModified: Date.now()
               });
-              setSound(file.name);
+              //setSound(file.name);
             }).then(() => downloader());
             await fetch(`https://finalprojectbackend.azurewebsites.net/api/User/${user?.sub}`, {
                 method: 'GET',

@@ -1,7 +1,6 @@
 import './feelingsWheel.css';
 import React, {useEffect, useState} from "react";
 import * as data from '../../Data/FeelingArray';
-import { useAuth0 } from '@auth0/auth0-react';
 
 const FeelingsWheel = () => {
     const [degree, setDegree] = useState<number>(0);
@@ -21,8 +20,8 @@ const FeelingsWheel = () => {
 
     useEffect(() => {
         const feelingNr = degree / 0.2 > 68 ? degree / 0.2 % 68 : degree / 0.2;
-        const core = Math.round(degree / 2.85) > 6 ? Math.round(degree/2.85) % 6 : Math.round(degree / 2.85);
-        const middle = degree / 0.4 > 34 ? degree % 34 : degree / 0.4;
+        // const core = Math.round(degree / 2.85) > 6 ? Math.round(degree/2.85) % 6 : Math.round(degree / 2.85);
+        // const middle = degree / 0.4 > 34 ? degree % 34 : degree / 0.4;
         setFeeling(feelingNr);  
         setStop(false);   
     } ,[degree, feeling])

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './Components/Home';
-import { Link, Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { Link, Route, Routes, BrowserRouter} from 'react-router-dom';
 import Emotion from './Components/Emotion/';
 import User from './Components/User/';
 import MicRecord from './Components/Mic/MicRecord';

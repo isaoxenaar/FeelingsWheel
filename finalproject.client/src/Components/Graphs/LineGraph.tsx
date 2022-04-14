@@ -2,8 +2,6 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import EmotionType from '../../Types/Emotion';
 import {ChartType} from '../../Types/ChartData';
-import { useState } from 'react';
-
 
 const LineGraph = ({data, type}: {data:EmotionType[], type:ChartType}) => {
 

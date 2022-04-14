@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Emotion.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import User from '../../Types/User';
@@ -6,7 +6,6 @@ import EmotionType from '../../Types/Emotion';
 import Select from 'react-select';
 import { Graphs } from '../Graphs/Graphs';
 import LineGraph from '../Graphs/LineGraph';
-import CustomChart from '../TryOutGraphs/CustomChart';
 
 const options = [
   { value: 'pieChart', label: 'Pie Chart' },
@@ -17,22 +16,8 @@ const options = [
 
 const Emotion = () => {
   const { user } = useAuth0();
-  const [thisUser, setUser] = useState<User>();
+  //const [thisUser, setUser] = useState<User>();
   const [modEmotions, setModEmotions] = useState<EmotionType[]>([
-    {
-      anger: 0,
-      contempt: 0,
-      disgust: 0,
-      fear: 0,
-      happiness: 0,
-      neutral: 0,
-      sadness: 0,
-      surprise: 0,
-      time: new Date(),
-      timeFormatted: ''
-    },
-  ]);
-  const [emotions, setEmotions] = useState<EmotionType[]>([
     {
       anger: 0,
       contempt: 0,
@@ -70,6 +55,7 @@ const Emotion = () => {
         e.surprise = parseFloat((emotions[i].Surprise * 100).toPrecision(3));
         e.time = new Date(emotions[i].Time);
         e.timeFormatted = new Date(e.time).toLocaleString();
+        return e;
         });
       setModEmotions(tempArr);
     }
@@ -90,8 +76,7 @@ const Emotion = () => {
       };
       return feeling;
     });
-    setUser(person);
-    setEmotions(feelings);
+    //setUser(person);
   };
 
   const [selectedOption, setSelectedOption] = useState(options[0]);

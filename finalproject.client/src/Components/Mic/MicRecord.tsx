@@ -60,7 +60,7 @@ const MicRecord = () => {
 
     const startRecording = async () => {
         let responsedata = '';
-        const response = await fetch(`https://localhost:7189/api/Speech/${user?.sub}`,{
+        const response = await fetch(`https://finalprojectbackend.azurewebsites.net/api/Speech/${user?.sub}`,{
             method: 'POST',
             headers: {
             },
@@ -83,7 +83,7 @@ const MicRecord = () => {
               });
               setSound(file.name);
             }).then(() => downloader());
-            await fetch(`https://localhost:7189/api/User/${user?.sub}`, {
+            await fetch(`https://finalprojectbackend.azurewebsites.net/api/User/${user?.sub}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

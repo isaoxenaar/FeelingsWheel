@@ -16,7 +16,7 @@ const Capture = () => {
     const { user } = useAuth0();
     
     const postPhoto = async () => {
-        await fetch(`https://localhost:7189/api/Face/${user?.sub}/getResponse`, {
+        await fetch(`https://finalprojectbackend.azurewebsites.net/api/Face/${user?.sub}/getResponse`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

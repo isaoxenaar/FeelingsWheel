@@ -53,7 +53,7 @@ const Emotion = () => {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    const response = await fetch(`https://localhost:7189/api/User/${user?.sub}`, requestOptions);
+    const response = await fetch(`https://finalprojectbackend.azurewebsites.net/api/User/${user?.sub}`, requestOptions);
 
     const person = await response.json();
     const emotions = JSON.parse(person.emotions);
